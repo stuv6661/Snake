@@ -1,0 +1,150 @@
+#
+#   This file is part of the MLV Library.
+#
+#   Copyright (C) 2013 2014 Adrien Boussicault, Marc Zipstein
+#
+#
+#    This library is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This library is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+Name:           @PACKAGE_TARNAME@
+Version:        @PACKAGE_VERSION@ 
+Release:        0%{?dist}
+Summary:        A simplified multimedia library in C for beginners.
+Group:          System Environment/Libraries
+License:        GPLv3
+URL:            @PACKAGE_URL@
+Source0:        @MLV_PACKAGE_REPOSITORY@/%{name}-%{version}.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+Requires:       SDL SDL_mixer SDL_ttf SDL_gfx SDL_image libxml2 glib2
+BuildRequires:  SDL-devel SDL_mixer-devel SDL_ttf-devel SDL_gfx-devel SDL_image-devel libxml2-devel glib2-devel doxygen automake autoconf gcc make pkgconfig
+
+%description
+The mlv library is a simplified multimedia libary.
+The library permit to:
+ - draw figures, text and boxed text,
+ - display images,
+ - plays musics,
+ - get Keyboard and mouse event
+ - get informations by input boxes
+This tools is a simplified interface of the SDL libraries.
+If you are not a beginner, we recommend you to use the 
+SDL libraries (sdl, sdl-gfx, sdl-sound,sdl-ttf) instead of
+the mlv library.
+The mlv library can be compiled for Linux, Macintosh 
+and windows.
+This package provide the runtime binary needed by the
+execution of program using the mlv library.
+
+%package devel
+Summary:        A simplified multimedia library in C for beginners.
+Group:          Development/Libraries
+Requires: 	mlv = %{version}-%{release} 
+Requires:       SDL-devel SDL_mixer-devel SDL_ttf-devel SDL_gfx-devel SDL_image-devel libxml2-devel glib2-devel gcc make pkgconfig pkgconfig
+
+%description devel
+The mlv library is a simplified multimedia libary.
+The library is perfect for beginners in C programming who
+want to use graphic and sound effects.
+The library permit to:
+ - draw figures, text and boxed text,
+ - display images,
+ - plays musics,
+ - get Keyboard and mouse event
+ - get informations by input boxes
+This tools is a simplified interface of the SDL libraries.
+If you are not a beginner, we recommend you to use the 
+SDL libraries (sdl, sdl-gfx, sdl-sound,sdl-ttf) instead of
+the mlv library.
+The mlv library can be compiled for Linux, Macintosh 
+and windows.
+This package provide all the developpement infrastructure
+of the mlv library.
+
+%package static
+Summary: Files needed to develop static MLV applications
+Group: Development/Libraries
+Requires: mlv-devel = %{version}-%{release} 
+
+%description static
+The mlv library is a simplified multimedia libary.
+The library is perfect for beginners in C programming who
+want to use graphic and sound effects.
+The library permit to:
+ - draw figures, text and boxed text,
+ - display images,
+ - plays musics,
+ - get Keyboard and mouse event
+ - get informations by input boxes
+This tools is a simplified interface of the SDL libraries.
+If you are not a beginner, we recommend you to use the 
+SDL libraries (sdl, sdl-gfx, sdl-sound,sdl-ttf) instead of
+the mlv library.
+The mlv library can be compiled for Linux, Macintosh 
+and windows.
+This package provide all the static libraries needed for developping 
+static MLV appilcations.
+
+
+%prep
+%setup -q
+
+%build
+%configure
+make %{?_smp_mflags}
+
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT
+
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
+%files
+%defattr(-,root,root,-)
+%doc AUTHORS COPYING
+%{_libdir}/lib*.so.*
+%{_libdir}/lib*.so
+%{_datadir}/MLV/data/font/DejaVuSerif-Bold.ttf
+
+%files devel
+%defattr(-,root,root)
+%doc README
+%{_libdir}/libMLV.la
+%{_libdir}/pkgconfig/MLV.pc
+%{_includedir}/MLV
+%{_docdir}/mlv
+%{_mandir}/man3/MLV_*.gz
+
+%files static
+%defattr(-,root,root)
+%{_libdir}/lib*.a 
+
+%changelog
+* Sun Feb 16 2014 A. Boussicault<boussica@labri.fr> @PACKAGE_VERSION@-0
+- Nothing to declare
+
+* Sun Jul 01 2012 A. Boussicault<boussica@labri.fr> 1.2.1-0
+- We automatieze the generation of this file.
+
+* Tue Feb 05 2010 A. Boussicault<boussica@univ-mlv.fr>, Marc Zipstein<marc.zipstein@univ-mlv.fr> 0.2-0
+- Creation of the originel package.
+

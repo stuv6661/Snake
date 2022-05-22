@@ -1,0 +1,185 @@
+#!/bin/bash
+
+# Compilation de la librairie MLV
+
+#
+#   This file is part of the MLV Library.
+#
+#   Copyright (C) 2010-2014 Adrien Boussicault, Marc Zipstein
+#
+#
+#    This library is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This library is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+
+
+WINDOWS_DIRECTORY="`pwd`"
+TOP_CROSS="$WINDOWS_DIRECTORY/cross-compilation"
+
+cd $TOP_CROSS
+source $TOP_CROSS/definition_of_environement_variables
+cd $WINDOWS_DIRECTORY
+
+MAIN_win32=$WINDOWS_DIRECTORY/@PACKAGE_TARNAME@-@PACKAGE_VERSION@-win32
+MAIN_DEV=$WINDOWS_DIRECTORY/@PACKAGE_TARNAME@-@PACKAGE_VERSION@-canonical-developpement-kit
+
+rm -rf $MAIN_DEV
+
+(
+if ! test -a $MAIN_win32/gpl.txt;
+then
+	./create_win32_binaries
+fi
+)
+
+MLV_EXAMPLES=$MAIN_DEV/MLV_examples
+MLV_MY_PROJECT=$MAIN_DEV/my_project
+
+
+mkdir -p $MAIN_DEV
+
+#Ajout de la documentation :
+MLV_SRC=$FAKEROOT/src/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
+(
+cd $MLV_SRC
+for i in ./doc/api/*
+do
+	base=`basename $i`
+	mkdir -p $MAIN_DEV/documentation/$base
+	cp -r $i/html/* $MAIN_DEV/documentation/$base/
+done
+)
+
+
+#Creation d'un projet vide :
+cp -r $MAIN_win32 $MLV_MY_PROJECT
+
+mkdir $MLV_MY_PROJECT/obj 
+mv $MLV_MY_PROJECT/bin $MLV_MY_PROJECT/final_product 
+mkdir $MLV_MY_PROJECT/sources
+
+cp @abs_top_srcdir@/examples/beginner/01_hello_world.c $MLV_MY_PROJECT/sources/main.c
+
+
+
+# Creation des exampes pour la librairie MLV
+MLV_EXAMPLES=$MAIN_DEV/MLV_examples
+
+cp -r $MLV_MY_PROJECT $MLV_EXAMPLES
+rm -rf $MLV_EXAMPLES/sources/main.c
+
+#On ajoute le code source des examples
+mkdir $MLV_EXAMPLES/sources/beginner
+mkdir $MLV_EXAMPLES/sources/medium
+mkdir $MLV_EXAMPLES/sources/advanced
+
+mkdir $MLV_EXAMPLES/final_product/data/musics
+for i in beginner medium advanced; do
+	for j in @abs_top_srcdir@/examples/$i/*.ogg; do
+		if test -f $j;
+		then
+			cp $j $MLV_EXAMPLES/final_product/data/musics/
+		fi
+	done;
+done;
+
+mkdir $MLV_EXAMPLES/final_product/data/images
+for i in beginner medium advanced; do
+	for j in @abs_top_srcdir@/examples/$i/*.png @abs_top_srcdir@/examples/$i/*.jpg; do
+		if test -f $j;
+		then
+			cp $j $MLV_EXAMPLES/final_product/data/images/
+		fi
+	done;
+done;
+
+mkdir $MLV_EXAMPLES/final_product/data/configuration_files
+for i in beginner medium advanced; do
+	for j in @abs_top_srcdir@/examples/$i/*.xml; do
+		if test -f $j;
+		then
+			cp $j $MLV_EXAMPLES/final_product/data/configuration_files/
+		fi
+	done;
+done;
+
+for i in beginner medium advanced; do
+	for j in @abs_top_srcdir@/examples/$i/*.ttf; do
+		if test -f $j;
+		then
+			cp $j $MLV_EXAMPLES/final_product/data/font/
+		fi
+	done;
+done;
+
+for i in beginner medium advanced; do
+	for j in @abs_top_srcdir@/examples/$i/*.c; do
+		name=`echo "$j" | sed -e 's#.*/\([^/]*\)*$#\1#g'`
+		cat $j | 
+		sed -e 's#"\([^"]*\.ttf\)"#"./data/font/\1"#g' | \
+		sed -e 's#"\([^"]*\.ogg\)"#"./data/musics/\1"#g' | \
+		sed -e 's#"\([^"]*\.mp3\)"#"./data/musics/\1"#g' | \
+		sed -e 's#"\([^"]*\.png\)"#"./data/images/\1"#g' | \
+		sed -e 's#"\([^"]*\.jpg\)"#"./data/images/\1"#g' | \
+		sed -e 's#"\([^"]*\.xml\)"#"./data/configuration_files/\1"#g' | \
+		sed -e 's#\(MLV_load_animation_book[ \t\r]*([ \t\r]*[^,]*[ \t\r]*,[ \t\r]*\)NULL\([ \t\r]*,[ \t\r]*\)NULL\([ \t\r]*)\)#\1\"./data/images\"\2\"./data/musics\"\3#g' > \
+		$MLV_EXAMPLES/sources/$i/$name
+	done;
+done;
+
+cp @abs_top_srcdir@/examples/beginner/gpl.txt $MLV_EXAMPLES/sources/beginner
+
+
+
+
+
+#Creation des executable pour chaque exemple
+# Creation des exampes pour la librairie MLV
+MLV_FINAL_PRODUCT=$MLV_EXAMPLES/final_product
+
+
+(
+cd $MLV_EXAMPLES/sources
+for i in **/*.c;
+do
+	j=`echo $i | sed -e "s#/#_#" | sed -e "s#\.c##"`;
+	path=`echo $i | sed -e "s#/.*##"`;
+	name=`echo $j | sed -e "s#^[^_]*_##"`;
+
+
+	if test x@COMPILE_DEBUG_VERSION_FOR_WINDOW@ = xyes
+	then
+		DEBUGFLAGS="-g -ggdb -pg -O0"
+		LDFLAGS=$( \
+			PKG_CONFIG_PATH=$FAKEROOT/lib/pkgconfig pkg-config --libs MLV \
+			|sed -e "s#-lMLV#/home/boussica/mlv-1.2.1/packaging/windows/cross-compilation/fakeroot-mingw32/lib/libMLV.a#"
+		)
+		LDFLAGS="$LDFLAGS -lSDL_gfx -lSDL_ttf -lSDL_image -lSDL_mixer -lglib-2.0 -lxml2"
+	else
+		DEBUGFLAGS="-g -O2"
+		LDFLAGS=$( \
+			PKG_CONFIG_PATH=$FAKEROOT/lib/pkgconfig pkg-config --libs MLV \
+
+		)
+	fi
+	
+	#compilation des exemples:
+	$CC $DEBUGFLAGS -Wall $( \
+		PKG_CONFIG_PATH=$FAKEROOT/lib/pkgconfig pkg-config --cflags MLV \
+	) $i -L$FAKEROOT/lib $LDFLAGS -lmingw32 -lSDLmain -lSDL -o $MLV_FINAL_PRODUCT/$j.exe
+done;
+)
+
+
+

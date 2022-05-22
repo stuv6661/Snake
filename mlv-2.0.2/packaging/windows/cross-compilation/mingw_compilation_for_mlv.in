@@ -1,0 +1,90 @@
+#!/bin/bash
+
+#
+#   This file is part of the MLV Library.
+#
+#   Copyright (C) 2010-2014 Adrien Boussicault, Marc Zipstein
+#
+#
+#    This library is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This library is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+source definition_of_environement_variables
+
+
+#Cleaning old cross-compilation platform
+print_blue "Cleanin old x86 cross-compilation platform"
+(
+	rm -rf $FAKEROOT
+)
+
+#preparation du dépôt de cross-compilation
+print_blue "Preparation of x86 cross-compilation platform"
+(
+	tar -xJf cross-compilation-x86.tar.xz 
+	mkdir $FAKEROOT_SRC
+)
+
+
+
+
+print_blue "Preparation of the source of @PACKAGE_TARNAME@-@PACKAGE_VERSION@"
+(
+cd @abs_top_srcdir@ && make dist > $TOP_CROSS/log_makedist 2>&1
+)
+(
+cp -r @abs_top_srcdir@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz $FAKEROOT_SRC
+cd $FAKEROOT_SRC
+rm -rf @PACKAGE_TARNAME@-@PACKAGE_VERSION@
+tar -xzf @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+)
+
+
+
+
+print_blue "Compilation of @PACKAGE_TARNAME@-@PACKAGE_VERSION@"
+(
+cd $FAKEROOT_SRC
+cd @PACKAGE_TARNAME@-@PACKAGE_VERSION@
+
+#
+# L'option libxml_CFLAGS="-I$FAKE32/include/libxml2" libxml_LIBS="-lxml2"
+# pour empecher ques les flags -lmingw32 et -lSDL_main soient positionner.
+# en effet cela empeche la creation de .DLL
+#
+# L'option LIBS="-lasprintf" est la pour permettre le linkage pour les fonction asprintf.
+#
+
+sdl_CFLAGS="-I${FAKEROOT}/include" sdl_LIBS="-lSDL" \
+glib_CFLAGS="-I${FAKEROOT}/include -I${FAKEROOT}/include/glib-2.0 -I${FAKEROOT}/lib/glib-2.0/include" \
+glib_LIBS="-lglib-2.0.dll" \
+libxml_CFLAGS="-I${FAKEROOT}/include" \
+libxml_LIBS="-lxml2" \
+CPPFLAGS="-I${FAKEROOT}/include -I/usr/${HOST}/include" \
+LDFLAGS="-L${FAKEROOT}/lib -L${FAKEROOT}/lib" \
+./configure  --host=i686-w64-mingw32 \
+	--prefix=${FAKEROOT} --enable-relativepath='./data' > log_configure 2>&1
+make > log_compile 2>&1 
+make install > log_install 2>&1
+)
+
+if test -e $FAKEROOT/bin/libMLV-@MLV_MAJOR_VERSION@.dll
+then
+	print_green "Compilation of MLV is a succes !"
+else
+	print_red "Compilation of MLV have failed."
+	echo ""
+	echo "Please read log_makedist, log_configure, log_compile and log_install."
+fi 
+

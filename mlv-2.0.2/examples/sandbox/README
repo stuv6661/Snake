@@ -1,0 +1,43 @@
+This is a sand box designed for MLV developpers who want to test recent 
+changes added in the MLV source without having to install the MLV library.
+
+This sandbox function only when you configure the source code in the 
+developpement. That means when you have typed:
+	./configure --enable-dev
+
+To use that sandbox, you just have to 
+	create a source file, for example:
+		litle_program.c
+	compile that file by typing:
+		make litle_program
+	and execute the result :
+		./litle_program
+
+To use gdb debuggeur, you have to type:
+	libtool --mode=execute gdb ./litle_program
+
+To use valgrind debuggeur, you have to type:
+	libtool --mode=execute valgrind ./litle_program
+
+To clean the directory, you can type:
+	make clean
+
+###############################################################################
+
+This file is part of the MLV Library.
+
+Copyright (C) 2010 Adrien Boussicault, Marc Zipstein
+
+This library is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+

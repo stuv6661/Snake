@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Compilation de la librairie MLV
+
+#
+#   This file is part of the MLV Library.
+#
+#   Copyright (C) 2010-2014 Adrien Boussicault, Marc Zipstein
+#
+#
+#    This library is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This library is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+
+MAIN_CODE_BLOCKS=@PACKAGE_TARNAME@-@PACKAGE_VERSION@-code_blocks
+rm -rf $MAIN_CODE_BLOCKS
+rm -rf $MAIN_CODE_BLOCKS.zip
+
+MAIN_DEV=@PACKAGE_TARNAME@-@PACKAGE_VERSION@-canonical-developpement-kit
+
+(
+if ! test -a $MAIN_DEV/my_project/gpl.txt;
+then
+	./create_canonical_developpement_kit
+fi
+)
+
+cp -r $MAIN_DEV $MAIN_CODE_BLOCKS
+
+MLV_EXAMPLES=$MAIN_CODE_BLOCKS/MLV_examples
+MLV_MY_PROJECT=$MAIN_CODE_BLOCKS/my_project
+
+#Creation d'un projet vide :
+cp my_project.cbp $MLV_MY_PROJECT/
+
+
+# Creation des exampes pour la librairie MLV
+MLV_EXAMPLES=$MAIN_CODE_BLOCKS/MLV_examples
+
+(
+cd $MLV_EXAMPLES/sources
+for i in **/*.c
+do 
+	j=`echo $i |sed -e "s#/#_#" |sed -e "s#\.c##"`
+	path=`echo $i |sed -e "s#/.*##"`
+	name=`echo $j |sed -e "s#^[^_]*_##"`
+	cat ../../../my_project.cbp |sed -e "s#my_project#$j#" |sed -e "s#\\\\main#\\\\$path\\\\$name#" > ../$j.cbp
+done;
+)
+
+zip -q -r $MAIN_CODE_BLOCKS.zip $MAIN_CODE_BLOCKS

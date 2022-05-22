@@ -1,0 +1,3410 @@
+// This file is part of the MLV Library.
+// 
+// Copyright (C) 2010 2012 2013 2014 Adrien Boussicault, Marc Zipstein
+// 
+// This library is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+
+/*!
+
+\~french
+\mainpage Présentation de la bibliothèque
+
+La bibliothèque MLV est une bibliothèque multimedia simplifiée.
+Cette bibliothèque convient parfaitement aux étudiants qui débutent dans la
+programmation en C et qui souhaitent ajouter des effets graphiques et 
+sonores dans leurs programmes.
+
+La bibliothèque permet de:
+- dessiner des figures, afficher du texte et des boîtes de dialogues,
+- afficher des images,
+- jouer de la musique,
+- recupérer et traiter des évènements clavier et souris,
+- récuperer des informations à l'aide d'une boîte de saisie de texte.
+
+Ces outils sont des interfaces simplifiées de la bibliothèque SDL.
+Si vous n'êtes pas débutant, nous vous recommandons d'utiliser plutôt les 
+bibliothèques SDL (SDL, SDL_gfx, SDL_sound, SDL_ttf, xml2) au lieu de la 
+bibliothèques MLV.
+La bibliothèque est portable, elle peut donc être compilée et exécutée sous 
+Linux, Macintosh (Lion et plus) et Windows (XP et Seven).
+Enfin, même si cette bibliothèque n'est pas orienté objet, il est possible de 
+l'utiliser dans un projet écrit en C++, 
+
+Sommaire:
+- \subpage download :
+  Ce chapitre explique comment trouver le code source, les binaires et les 
+  paquets d'installation de la bibliothèque.
+
+- \subpage installation :
+  Ce chapitre explique comment faire pour installer la biliothèque sur votre ordinateur.
+ 
+- \subpage compilation : 
+  Ce chapitre explique comment utiliser la bibliothèque dans vos programmes.
+
+- \subpage documentation :
+  Ce chapitre vous explique où trouver de la documentation et des exemples sur la bibliothèque.
+
+- \subpage documentation_paquet :
+  Ce chapitre indique comment créer des paquets de la bibliothèque pour votre distribution.
+
+- \subpage release_new_version :
+  Ce chapitre est dédié aux contributeurs de MLV. Il explique la procédure à 
+  suivre pour sortir une nouvelle version de MLV.
+
+- \subpage contact_auteur :
+  Ce chapitre donne les addresses électroniques des auteurs de la bibliothèque.
+
+*/
+
+
+
+
+
+// ============================================================================
+
+
+
+
+
+/*!
+\~french
+\page download Télécharger la bibliothèque MLV
+
+La dernière version stable de la bibliothèque est la version @PACKAGE_VERSION@.
+
+
+La bibliothèque MLV est diponible sous plusieurs formats et pour différentes plates-formes:
+
+Paquets debian 32 bits : 
+- binaires: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_32_BINARY_PACKAGE@">@MLV_DEBIAN_32_BINARY_PACKAGE@</a>
+- développement: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_32_DEV_PACKAGE@">@MLV_DEBIAN_32_DEV_PACKAGE@</a>
+
+Paquets debian 64 bits : 
+- binaires: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_64_BINARY_PACKAGE@">@MLV_DEBIAN_64_BINARY_PACKAGE@</a>
+- développement: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_64_DEV_PACKAGE@">@MLV_DEBIAN_64_DEV_PACKAGE@</a>
+
+Paquets RPM pour Fedora 32 bits : 
+- binaires: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_32_BINARY_PACKAGE@">@MLV_FEDORA_32_BINARY_PACKAGE@</a>
+- développement: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_32_DEV_PACKAGE@">@MLV_FEDORA_32_DEV_PACKAGE@</a>
+- bibliothèques statiques: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_32_STATIC_PACKAGE@">@MLV_FEDORA_32_STATIC_PACKAGE@</a>
+- code source: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_32_SOURCE_PACKAGE@">@MLV_FEDORA_32_SOURCE_PACKAGE@</a>
+- Clé: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_KEY_PACKAGE@">@MLV_FEDORA_KEY_PACKAGE@</a>
+
+Paquets RPM pour Fedora 64 bits : 
+- binaires: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_64_BINARY_PACKAGE@">@MLV_FEDORA_64_BINARY_PACKAGE@</a>
+- développement: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_64_DEV_PACKAGE@">@MLV_FEDORA_64_DEV_PACKAGE@</a>
+- bibliothèques statiques: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_64_STATIC_PACKAGE@">@MLV_FEDORA_64_STATIC_PACKAGE@</a>
+- code source: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_64_SOURCE_PACKAGE@">@MLV_FEDORA_64_SOURCE_PACKAGE@</a>
+- Clé: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_KEY_PACKAGE@">@MLV_FEDORA_KEY_PACKAGE@</a>
+
+
+<!--
+Paquets RPM pour Mandriva : <a href="@MLV_SOURCE_REPOSITORY@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@-mandriva.rpm">@PACKAGE_TARNAME@-@PACKAGE_VERSION@-mandriva.rpm</a>
+
+Paquets gentoo : Non disponnible
+
+-->
+
+Windows :
+- Binaires : <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_WIN_32_BINARIES@">@MLV_WIN_32_BINARIES@</a>
+- Projet Code::Blocks : <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_CODEBLOCKS_32_PACKAGE@">@MLV_CODEBLOCKS_32_PACKAGE@</a>
+- Projet dev-cpp : <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEVCPP_32_PACKAGE@">@MLV_DEVCPP_32_PACKAGE@</a>
+
+Paquets MacOS @MLV_MACOSX_VERSION@:
+- Paquet d'installation : <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_MACOSX_PACKAGE@">@MLV_MACOSX_PACKAGE@</a>
+
+Code source : <a href="@MLV_PACKAGE_REPOSITORY@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz">@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz</a>
+
+Dépôt : @MLV_REPOSITORY@<br />
+Révision du dépôt : @MLV_RCS_REVISION@
+
+Anciennes versions: <a href="@MLV_SOURCE_REPOSITORY@">dépôt contenant toutes les versions de la bibliothèque MLV</a>.
+
+
+*/
+
+
+
+
+/*!
+\~english
+\page download Download the MLV livrary
+
+The last stable version of MLV is @PACKAGE_VERSION@.
+
+Debian 32 bits: 
+- binaries: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_32_BINARY_PACKAGE@">@MLV_DEBIAN_32_BINARY_PACKAGE@</a>
+- developement: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_32_DEV_PACKAGE@">@MLV_DEBIAN_32_DEV_PACKAGE@</a>
+
+Debian 64 bits: 
+- binaries: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_64_BINARY_PACKAGE@">@MLV_DEBIAN_64_BINARY_PACKAGE@</a>
+- developement: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_64_DEV_PACKAGE@">@MLV_DEBIAN_64_DEV_PACKAGE@</a>
+
+Fedor 32 bits:
+- binaries: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_32_BINARY_PACKAGE@">@MLV_FEDORA_32_BINARY_PACKAGE@</a>
+- developement: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_32_DEV_PACKAGE@">@MLV_FEDORA_32_DEV_PACKAGE@</a>
+- static library: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_32_STATIC_PACKAGE@">@MLV_FEDORA_32_STATIC_PACKAGE@</a>
+- source code: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_32_SOURCE_PACKAGE@">@MLV_FEDORA_32_SOURCE_PACKAGE@</a>
+- key: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_KEY_PACKAGE@">@MLV_FEDORA_KEY_PACKAGE@</a>
+
+Paquets RPM pour Fedora 64 bits: 
+- binaries: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_64_BINARY_PACKAGE@">@MLV_FEDORA_64_BINARY_PACKAGE@</a>
+- developement: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_64_DEV_PACKAGE@">@MLV_FEDORA_64_DEV_PACKAGE@</a>
+- static library: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_64_STATIC_PACKAGE@">@MLV_FEDORA_64_STATIC_PACKAGE@</a>
+- source code: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_64_SOURCE_PACKAGE@">@MLV_FEDORA_64_SOURCE_PACKAGE@</a>
+- key: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_KEY_PACKAGE@">@MLV_FEDORA_KEY_PACKAGE@</a>
+
+Windows:
+- binaries: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_WIN_32_BINARIES@">@MLV_WIN_32_BINARIES@</a>
+- Code::Blocks package: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_CODEBLOCKS_32_PACKAGE@">@MLV_CODEBLOCKS_32_PACKAGE@</a>
+- dev-cpp package: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEVCPP_32_PACKAGE@">@MLV_DEVCPP_32_PACKAGE@</a>
+
+MacOS @MLV_MACOSX_VERSION@:
+- Installation package: <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_MACOSX_PACKAGE@">@MLV_MACOSX_PACKAGE@</a>
+
+Source code: <a href="@MLV_PACKAGE_REPOSITORY@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz">@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz</a>
+
+Repository: @MLV_REPOSITORY@<br />
+Repository révision: @MLV_RCS_REVISION@
+
+Old releases: <a href="@MLV_SOURCE_REPOSITORY@">repository containing all the versions of the MLV library</a>.
+
+
+*/
+
+
+
+
+// ============================================================================
+
+
+
+
+/*!
+\~french
+\page installation Installation la bibliothèque MLV
+
+- \subpage installation_linux
+
+- \subpage installation_windows
+
+- \subpage installation_macos
+
+
+*/
+
+
+
+
+
+//==============================================================================
+
+
+
+
+
+
+
+/*!
+\~french
+\page installation_linux Installer MLV sous Linux
+
+Repérez dans liste qui suit la distribution que vous utilisez, suivez ensuite les instructions d'installation.
+Si, votre distribution n'est pas présente dans la liste, choisissez alors l'installation à partir du code source.
+Si vous rencontrez des problèmes avec les paquets d'installation, utilisez alors l'installation à partir du code source.
+Cette méthode fonctionnera toujours.
+
+- \ref installation_debian
+- \ref installation_fedora
+- \ref installation_source
+
+
+
+\section installation_debian Debian et Ubuntu
+
+Commencez par installer les bibliothèques sdl, sdl-gfx, sdl-mixer, sdl-ttf, sdl-image, sdl-image, xml2 et glib2.0 en tapant la commande suivante:
+
+\verbatim
+sudo apt-get install libsdl-gfx1.2-dev libsdl1.2-dev libsdl-mixer1.2-dev 
+sudo apt-get install libsdl-ttf2.0-dev libglib2.0-dev libxml2-dev 
+sudo apt-get install libsdl-image1.2-dev
+\endverbatim
+
+Téléchargez ensuite les paquets de la bibliothèque :
+- <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_64_BINARY_PACKAGE@">@MLV_DEBIAN_64_BINARY_PACKAGE@</a>
+- <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_64_DEV_PACKAGE@">@MLV_DEBIAN_64_DEV_PACKAGE@</a>
+
+(si vous utilisez un ordinateur 32 bits, vous devez utilisez les paquets 
+<a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_32_BINARY_PACKAGE@">@MLV_DEBIAN_32_BINARY_PACKAGE@</a> et 
+<a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEBIAN_32_DEV_PACKAGE@">@MLV_DEBIAN_32_DEV_PACKAGE@</a>
+à la place)
+
+et installez-les en tapant la commande suivante:
+
+\verbatim
+sudo dpkg -i @MLV_DEBIAN_64_BINARY_PACKAGE@ @MLV_DEBIAN_64_DEV_PACKAGE@
+\endverbatim
+
+La bibliothèque MLV est installée.
+
+
+N'oubliez pas que pour compiler vos programme, il vous faut les outils de compilation.
+Si vous n'avez pas encore installé ces outils, tapez la commande suivante:
+
+\verbatim
+sudo apt-get install build-essential
+\endverbatim
+
+<!--
+\section installation_mandriva Mandriva
+
+Commencez par télécharger les paquets de la bibliothèque à l'adresse:
+
+<a href="@MLV_SOURCE_REPOSITORY@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@-1.i586.rpm">@PACKAGE_TARNAME@-@PACKAGE_VERSION@-1.i586.rpm</a>
+
+et installez-les en tapant les commandes suivantes:
+
+\verbatim
+su
+urpmi @PACKAGE_TARNAME@-@PACKAGE_VERSION@-1.i586.rpm
+exit
+\endverbatim
+
+La bibliothèque MLV est installée.
+-->
+
+\section installation_fedora Fedora
+
+Nous supposerons que vous avez installer une ferdora 64 bits. Les utilisateurs 
+utilisant une fedora 32 bits, devroint adapter le tutoriel en remplacant, la
+chaîne de caractere "x86_64" par "i686".
+
+Commencez par télécharger les paquets de la bibliothèque suivants:
+
+- <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_64_BINARY_PACKAGE@">@MLV_FEDORA_64_BINARY_PACKAGE@</a>
+- <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_64_DEV_PACKAGE@">@MLV_FEDORA_64_DEV_PACKAGE@</a>
+- <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_64_STATIC_PACKAGE@">@MLV_FEDORA_64_STATIC_PACKAGE@</a>
+- <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_FEDORA_KEY_PACKAGE@">@MLV_FEDORA_KEY_PACKAGE@</a>
+
+
+et installez-les en tapant la commande suivante:
+
+\verbatim
+sudo yum update
+sudo rpm --import @MLV_FEDORA_KEY_PACKAGE@
+sudo yum install @MLV_FEDORA_64_BINARY_PACKAGE@
+sudo yum install @MLV_FEDORA_64_DEV_PACKAGE@
+sudo yum install @MLV_FEDORA_64_STATIC_PACKAGE@
+\endverbatim
+
+La bibliothèque MLV est installée.
+
+
+<!--
+\section installation_gentoo Gentoo
+
+Ouvrez une console et tapez la commande suivante:
+
+\verbatim
+sudo emerge libsdl SDL-gfx SDL-ttf glib2.0 doxygen
+\endverbatim
+
+A FINIR.
+-->
+
+\section installation_source À partir du code source
+
+Avant de commencer à compiler et installer la bibliothèque MLV,il faut que vous vérifiez que vous avez les bibliothèques de développement et les programmes suivants correctement installés:
+
+
+- gcc 
+- libtool
+- make
+- autoconf
+- doxygen
+- sdl1.2
+- sdl-gfx
+- sdl-mixer1.2
+- sdl-ttf
+- glib2.0
+- xml2
+
+
+Téléchargez le code source de la bibliothèque MLV : <a href="@MLV_SOURCE_REPOSITORY@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz">@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz</a>.
+
+
+Décompressez le code en tapant la commande suivante :
+
+\verbatim
+tar -xzf @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+\endverbatim
+
+Installez la bibliothèque en tapant les commandes suivantes:
+
+\verbatim
+cd @PACKAGE_TARNAME@-@PACKAGE_VERSION@
+./configure --prefix=/usr
+make
+sudo make install
+\endverbatim
+
+Voilà, la bibliothèque est installée.
+*/
+
+
+
+
+
+
+//==============================================================================
+
+
+
+
+
+
+
+
+/*!
+\~french
+
+\page installation_windows Installer MLV sous Windows
+
+Pour compiler votre programme sous Windows, vous pouvez utiliser différents 
+environnements de développement.
+Nous vous proposons, au choix l'un des deux environnements suivants :
+
+- \ref windows_dev_cpp
+- \ref windows_code_blocks (Ne fonctionne plus, pour l'instant - Utilisez dec-cpp à la place)
+
+Si vous ne savez pas quel environnement choisir, nous vous conseillons 
+d'utiliser Dev-C++ qui est un peu plus simple à utiliser.
+ 
+Attention: Il faut savoir que la bibliothèque 
+@PACKAGE_TARNAME@-@PACKAGE_VERSION@ fonctionne actuellement avec Windows 2000, 
+NT, XP et SEVEN, mais pas avec windows VISTA.
+Sous windows, la croix d'arrêt des fenêtres ne fonctionne pas toujours 
+correctement.
+
+
+\section windows_dev_cpp Installer MLV avec Dev-C++
+
+Nous allons expliquer comment installer MLV avec Dev-C++.
+Commencez par télécharger le programme d'installation <a href="@MLV_SOURCE_REPOSITORY@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@/devcpp-4.9.9.2_setup.exe">devcpp-4.9.9.2_setup.exe</a> et installez-le sur votre ordinateur.
+
+Une fois l'installation terminée, vous allez télécharger deux projets pour Dev-c++ qui utilisent la bibliothèque MLV. Pour cela, récupérez le fichier : <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_DEVCPP_32_PACKAGE@">@MLV_DEVCPP_32_PACKAGE@</a>.
+
+Une fois le fichier téléchargé, décompressez-le où vous le souhaitez.
+Vous devez obtenir un dossier qui contient les fichiers suivants:
+\verbatim
+mlv-0.6.692-dev-cpp
+|-- documentation
+|   |-- English\
+|   |-- French\
+|   `-- Spanish\
+|-- MLV_examples
+|   |-- beginner_01_hello_world.dev
+|   |-- beginner_02_shapes.dev
+|   |-- beginner_03_random.dev
+|   |-- beginner_04_texts_and_boxes.dev
+|   |-- beginner_05_mouse.dev
+|   |-- beginner_06_keyboard.dev
+|   |-- beginner_07_input_box.dev
+|   |-- beginner_08_mouse_keyboard_timer.dev
+|   |-- beginner_09_colors.dev
+|   |-- beginner_10_library_informations.dev
+|   |-- medium_01_keyboard_events.dev
+|   |-- medium_02_mouse_events.dev
+|   |-- medium_03_input_box_events.dev
+|   |-- medium_04_events.dev
+|   |-- medium_05_exit.dev
+|   |-- medium_06_colors.dev
+|   |-- medium_07_time.dev
+|   |-- medium_08_full_screen.dev
+|   |-- medium_09_keyboard_accents.dev
+|   |-- medium_10_mouse_or_keyboard_access.dev
+|   |-- medium_11_keys_codes.dev
+|   |-- medium_12_desktop_size.dev
+|   |-- advanced_01_texts_and_boxes.dev
+|   |-- advanced_02_font.dev
+|   |-- advanced_03_music.dev
+|   |-- advanced_04_sound.dev
+|   |-- advanced_05_playlist.dev
+|   |-- advanced_06_image.dev
+|   |-- advanced_07_transparency.dev
+|   |-- advanced_08_zone_click.dev
+|   |-- advanced_09_animation.dev
+|   |-- advanced_10_read_xml_file.dev
+|   |-- advanced_11_animation_book.dev
+|   |-- advanced_12_paths.dev
+|   |-- gpl.txt
+|   |-- final_product\
+|   |-- include\
+|   |-- lib\
+|   |-- obj\
+|   `-- sources\
+`-- my_project
+    |-- my_project.dev
+    |-- gpl.txt
+    |-- final_product\
+    |-- include\
+    |-- lib\
+    |-- obj\
+    `-- sources\
+\endverbatim 
+
+Éxécutez le programme \a devcpp.exe et ouvrez les projets situés dans le dossier MLV_example.
+Ce sont des exemples d'utilisation de la bibliothèque MLV.
+
+Vous pouvez compiler puis éxécuter ces différents projets en utilisant la barre d'icône du programme.
+
+Pour créer votre propre projet, recopiez le répertoire, \a mon_projet, éditez le fichier \a mon_projet.dev et adaptez le à vos besoins.
+
+Pour distribuer le programme que vous avez obtenu, il vous suffit de copier le répertoire \a final_product qui se trouve dans le répertoire de votre projet.
+Le programme situé dans ce répertoire est autonome et ne nécessite pas d'avoir Dev-C++ installé pour fonctionner.
+
+
+\section windows_code_blocks Installer MLV avec Code:Blocks
+
+Actuellement cette partie ne fonctionne plus. Utilisez dec-cpp.
+
+Nous allons expliquer comment installer MLV avec Code:Blocks.
+Commencez par télécharger le programme d'installation <a href="@MLV_SOURCE_REPOSITORY@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@/codeblocks-8.02mingw-setup.exe">codeblocks-8.02mingw-setup.exe</a> et installez-le sur votre ordinateur.
+
+
+Une fois l'installation terminée, vous allez télécharger deux projets pour Code::Blocks qui utilisent la bibliothèque MLV. Pour cela, récupérez le fichier : <a href="@MLV_PACKAGE_REPOSITORY@/@MLV_CODEBLOCKS_32_PACKAGE@">@MLV_CODEBLOCKS_32_PACKAGE@</a>.
+
+
+Une fois le fichier téléchargé, décompressez-le où vous le souhaitez.
+Vous devez obtenir un dossier qui contient les fichiers suivants:
+\verbatim
+mlv-0.6.692-code_blocks
+|-- documentation
+|   |-- English
+|   |-- French
+|   `-- Spanish
+|-- MLV_examples
+|   |-- beginner_01_hello_world.cbp
+|   |-- beginner_02_shapes.cbp
+|   |-- beginner_03_random.cbp
+|   |-- beginner_04_texts_and_boxes.cbp
+|   |-- beginner_05_mouse.cbp
+|   |-- beginner_06_keyboard.cbp
+|   |-- beginner_07_input_box.cbp
+|   |-- beginner_08_mouse_keyboard_timer.cbp
+|   |-- beginner_09_colors.cbp
+|   |-- beginner_10_library_informations.cbp
+|   |-- medium_01_keyboard_events.cbp
+|   |-- medium_02_mouse_events.cbp
+|   |-- medium_03_input_box_events.cbp
+|   |-- medium_04_events.cbp
+|   |-- medium_05_exit.cbp
+|   |-- medium_06_colors.cbp
+|   |-- medium_07_time.cbp
+|   |-- medium_08_full_screen.cbp
+|   |-- medium_09_keyboard_accents.cbp
+|   |-- medium_10_mouse_or_keyboard_access.cbp
+|   |-- medium_11_keys_codes.cbp
+|   |-- medium_12_desktop_size.cbp
+|   |-- advanced_01_texts_and_boxes.cbp
+|   |-- advanced_02_font.cbp
+|   |-- advanced_03_music.cbp
+|   |-- advanced_04_sound.cbp
+|   |-- advanced_05_playlist.cbp
+|   |-- advanced_06_image.cbp
+|   |-- advanced_07_transparency.cbp
+|   |-- advanced_08_zone_click.cbp
+|   |-- advanced_09_animation.cbp
+|   |-- advanced_10_read_xml_file.cbp
+|   |-- advanced_11_animation_book.cbp
+|   |-- advanced_12_paths.cbp
+|   |-- gpl.txt
+|   |-- final_product/
+|   |-- include/
+|   |-- lib/
+|   |-- obj/
+|   `-- sources/
+`-- my_project
+    |-- gpl.txt
+    |-- final_product/
+    |-- include/
+    |-- lib/
+    |-- my_project.cbp
+    |-- obj/
+    `-- sources/
+\endverbatim 
+
+Éxécutez le programme \a codeblocks.exe et ouvrez les projets situés dans le dossier MLV_example.
+Ce sont des exemples d'utilisation de la bibliothèque MLV.
+
+Vous pouvez compiler puis éxécuter ces différents projets en cliquant respectivement sur la roue dentée et le triangle de lecture.
+
+Pour créer votre propre projet, ouvrez le projet situé dans le répertoire, \a mon_projet. Puis sauvegardez le projet comme un "user template".
+
+Une fois fait, vous pouvez créer un nouveau projet en utilisant ce template. Attention ! Vous devez créer ce projet dans le même répertoire que le répertoire mon_projet !
+
+Si vous voulez créer votre projet dans un nouveau répertoire, alors vous devez recopier intégralement le contenu de \a mon_projet et le placer dans le nouveau répertoire. Vous pourez alors obtenir votre nouveau projet en utilisant le template créé précédement.
+
+Pour distribuer le programme que vous avez obtenu, il vous suffit de copier le répertoire \a final_product qui se trouve dans le répertoire de votre projet.
+Le programme situé dans ce répertoire est autonome et ne nécessite pas d'avoir Code:Blocks installé pour fonctionner.
+
+
+*/
+
+
+
+
+
+//==============================================================================
+
+
+
+
+/*!
+\~french
+
+\page installation_macos Installer MLV sous MacOS X
+
+
+Vous pouvez installer la bibliothèque MLV de deux façons différentes:
+
+- \ref macos_package
+- \ref macos_compilation
+
+Si vous ne savez pas quoi choisir, nous vous conseillons d'utiliser l'installation à l'aide des paquets car c'est la plus simple à installer.
+La deuxième, qui utilise le code source de la bibliothèque vous permettra toujours de réussir l'installation, mais elle est beaucoup plus compliquée à mettre en oeuvre.
+
+
+\section macos_package Installation de MLV à partir d'un paquet d'installation MacOSX
+
+Pour insaller la bibliothèque MLV pour MacOS 10.5, vous devez téléchargez le fichier :
+<a href="@MLV_PACKAGE_REPOSITORY@/@MLV_MACOSX_PACKAGE@">@MLV_MACOSX_PACKAGE@</a>.
+
+Cliquez sur le paquet téléchargé et suivez les instructions.
+
+A la fin de la procédure, l'installation est terminée.
+
+
+\section macos_compilation Installation de MLV à partir du code source de la bibliothèque 
+
+\subsection install_tool_macos Installation des outils de développement de MacOSX
+
+Commencez par installer l'environnement de programmation d'Apple. 
+Pour cela, au choix, 
+- Installez Xcode depuis le site de téléchargement de Apple.
+- chargez le second dvd d'installation du système d'exploitation de 
+votre ordinateur, puis installez XCode Tool.
+
+Cet environnement contient entre autre gcc, et make.
+
+\subsection install_env_macos Mis en place d'un environnement de développement pour MLV
+
+Nous allons installer la bibliothèque MLV ainsi que ses dépendances dans un 
+répertoire de votre dossier personnel.
+
+Créez un répertoire en tapant la commande :
+
+\verbatim
+mkdir $HOME/fakeroot
+mkdir $HOME/fakeroot/src
+mkdir $HOME/Library/Frameworks
+\endverbatim
+
+Il est nécessaire de configurer le système d'exploitation pour qu'il sache 
+que de nouvelles bibliothèques sont installées dans le répertoire fakeroot.
+Pour cela, il suffit de définir quelques variables d'environnement dans un 
+fichier qui est exécuté à chaque démarrage du terminal.
+
+Ce fichier est $HOME/.bash_profile
+
+Ajoutez, à la fin du fichier, les commandes suivantes:
+
+\verbatim
+export FAKEROOT="$HOME/fakeroot" 
+export PATH="$FAKEROOT/bin:$PATH"
+export DYLD_LIBRARY_PATH="$FAKEROOT/lib:$DYLD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="$FAKEROOT/lib/pkgconfig:$PKG_CONFIG_PATH"
+export LD_LIBRARY_PATH="$FAKEROOT/lib:$LD_LIBRARY_PATH"
+export ACLOCAL="aclocal -I $FAKEROOT/share/aclocal -I /usr/share/aclocal"
+export PKG_CONFIG="$FAKEROOT/bin/pkg-config"
+export CPPFLAGS="-I$FAKEROOT/include"
+export LDFLAGS="-L$FAKEROOT/lib"
+\endverbatim
+
+Si le fichier n'existe pas, créez le.
+
+
+Vous devez maintenant redémarrer votre terminal pour prendre en compte les changements.
+
+Vérifiez que les variables d'environnement ont bien été installées en tapant la commande:
+
+\verbatim
+export
+\endverbatim
+
+Cette commande devrait afficher toutes les variables d'environnement existantes.
+
+Vous pouvez aussi les examiner une à une en tapant la commande:
+
+\verbatim
+echo $FAKEROOT
+echo $PATH
+etc ...
+\endverbatim
+
+
+\subsection install_dep_macos Installation des dépendances de MLV
+
+Nous allons maintenant installer différents programmes et bibliothèques qui 
+seront nécessaires au fonctionnement de MLV.
+
+
+\subsubsection install_pkg_macos Installation de pkg-config
+
+Commencez par télécharger pkg-config.tar en allant sur le site :
+
+http://pkgconfig.freedesktop.org/releases/
+
+et en le mettant dans le répertoire
+
+\verbatim
+$HOME/fakeroot/src
+\endverbatim
+
+Il est important de PRENDRE LA DERNIÈRE VERSION DE PKG-CONFIG.
+En effet, pkg-config utilise une autre bibliothèque qui n'est pas incluse 
+dans le codes source des anciennes versions.
+
+Désarchivez le fichier en tapant la ligne de commande suivante:
+
+\verbatim
+cd $HOME/fakeroot/src
+tar -xf pkg-config-X.X.tar
+\endverbatim
+
+où X.X est le numéro de la version de la bibliothèque que vous avez téléchargée.
+
+Nous allons maintenant installer pkg-config :
+
+\verbatim
+cd ./pkg-config-X.X
+./configure --with-internal-glib --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+La deuxième ligne de commande configure le code source de pkg-config pour que 
+le code source prenne en compte les caractéristiques de l'architecture de votre 
+ordinateur.
+L'option --prefix permet de dire au code source que le résultat de la 
+compilation doit être installé dans le répertoire $FAKEROOT.
+Nous rappelons que la variable d'environnement $FAKEROOT a été précédemment
+configurée pour valoir la valeur $HOME/fakeroot (qui est votre répertoire 
+d'installation des bibliothèques).
+La 3ème commande compile le programme.
+La dernière installe la bibliothèque sur votre ordinateur à l'endroit que vous avez
+donné lors de l'étape de configuration du code source.
+
+Voilà, pkg-config est installée.
+
+
+\subsubsection install_m4_macos Installation de M4
+
+M4 est un outil d'aide à la compilation.
+
+L'installation de M4 est identique à celle de pkg-config. 
+Commencez par télécharger m4-X.X.X.tar sur le site : 
+http://ftp.gnu.org/gnu/m4/
+
+Puis tapez les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xf m4-X.X.X.tar.gz
+cd m4.X.X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+
+\subsubsection install_autoconf_macos Installation de autoconf
+
+Autoconf est un outil d'aide à la compilation.
+
+Commencez par télécharger autoconf-X.X.tar.gz sur le site :
+http://ftp.gnu.org/gnu/autoconf/
+
+Puis tapez les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf autoconf-X.X.tar.gz
+cd autoconf-X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+
+\subsubsection install_autoconf_archive_macos Installation de autoconf-archive
+
+Autoconf-archives est une bibliothèque de script pour autoconf.
+
+Commencez par télécharger autoconf-archive-X.X.X.tar.gz sur le site :
+http://ftp.gnu.org/gnu/autoconf-archive/
+
+Puis tapez les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf autoconf-archive-X.X.X.tar.gz
+cd autoconf-archive-X.X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+
+\subsubsection install_automake_macos Installation de automake
+
+Autocomake est un outil d'aide à la compilation.
+
+Commencez par télécharger automake-X.X.tar.gz sur le site :
+http://ftp.gnu.org/gnu/automake/
+
+Puis tapez les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf automake-X.X.tar.gz
+cd automake-X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+
+\subsubsection install_libtool_macos Installation de libtool
+
+
+Libtool est un outil d'aide à la compilation.
+
+L'installation de libtool est identique à celle de pkg-config. 
+Commencez par télécharger libtool-X-X.tar sur le site : 
+http://ftp.gnu.org/gnu/libtool/.
+
+Puis tapez les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xf libtool-X-X.tar
+cd libtool-X-X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+\subsubsection install_libxml2_macos Installation de libxml2
+
+Téléchargez le code source de la bibliothèque sur le site
+ftp://xmlsoft.org/libxml2/
+
+Vous pouvez choisir, par exemple, le fichier libxml2-git-snapshot.tar.gz.
+
+Puis tapez les lignes de commandes suivantes:
+
+\verbatim
+cd $FAKEROOT/src
+tar -xzf libxml2-X.tar.gz
+cd libxml2-X.X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+\subsubsection install_libffi_macos Installation de libffi
+
+Commencez par télécharger libffi-X.X.tar.gz en allant sur le site :
+\verbatim
+http://sourceware.org/libffi/
+\endverbatim
+
+Puis tapez les lignes de commandes suivantes:
+
+\verbatim
+cd $FAKEROOT/src
+tar -xzf libffi-X.X.tar.gz
+cd libffi-X.X
+./configure --prefix=$FAKEROOT
+cd x86_64-apple-darwinX.X.X
+make
+make install
+\endverbatim
+
+\subsubsection install_gettext_macos Installation de gettext
+
+Commencez par télécharger gettext-X.tar.gz en allant sur le site :
+\verbatim
+http://www.gnu.org/software/gettext/
+\endverbatim
+
+\verbatim
+cd $FAKEROOT/src
+tar -xzf gettext-X.X.X.X.tar.gz
+\endverbatim
+
+Ensuite, compilez et installez la bibliothèque en tapant les commandes suivantes:
+\verbatim
+cd gettext-X.X.X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+ 
+
+\subsubsection install_glib2_macos Installation de glib2
+
+Téléchargez la bibliothèque sur le site
+http://ftp.gtk.org/pub/glib/ 
+
+Désarchivez ensuite la bibliothèque en tapant les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf glib-2.X.X.tar.gz
+cd glib-2.X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+
+\subsubsection install_sdl_macos Installation de SDL
+
+Téléchargez le paquet d'installation pour MacOSX de la bibliothèque sur le site 
+http://www.libsdl.org/download-1.2.php
+
+Ce paquet a pour nom : SDL-1.2.X.dmg (Intel10.5+)
+
+Puis, installez le paquet en tapant les commandes suivantes :
+\verbatim
+hdiutil attach SDL-1.2.X.dmg
+sudo cp -r /Volumes/SDL/SDL.framework /Library/Frameworks/
+hdiutil detach /Volumes/SDL
+\endverbatim
+
+
+
+
+
+
+\subsubsection install_sdlimage_macos Installation de SDL_image
+
+Téléchargez le paquet d'installation pour MacOSX de la bibliothèque sur le site
+http://www.libsdl.org/projects/SDL_image/release-1.2.html
+
+Ce paquet a pour nom : SDL_image-1.2.X.dmg (Intel10.5+)
+
+Puis, installez le paquet en tapant les commandes suivantes :
+\verbatim
+hdiutil attach SDL_image-1.2.X.dmg
+sudo cp -r /Volumes/SDL_image/SDL_image.framework /Library/Frameworks/
+hdiutil detach /Volumes/SDL_image
+\endverbatim
+
+
+
+\subsubsection install_sdlmixer_macos Installation de SDL_mixer
+
+Téléchargez le paquet d'installation pour MacOSX de la bibliothèque sur le site
+http://www.libsdl.org/projects/SDL_mixer/release-1.2.html
+
+Ce paquet a pour nom : SDL_mixer-1.2.X.dmg (Intel10.5+)
+
+Puis, installez le paquet en tapant les commandes suivantes :
+\verbatim
+hdiutil attach SDL_mixer-1.2.X.dmg
+sudo cp -r /Volumes/SDL_mixer/SDL_mixer.framework /Library/Frameworks/
+hdiutil detach /Volumes/SDL_mixer
+\endverbatim
+
+
+
+
+\subsubsection install_sdlttf_macos Installation de SDL_ttf
+
+Téléchargez le paquet d'installation pour MacOSX de la bibliothèque sur le site
+http://www.libsdl.org/projects/SDL_ttf/release-1.2.html
+
+Ce paquet a pour nom : SDL_ttf-X.X.X.dmg (Intel10.5+)
+
+Puis, installez le paquet en tapant les commandes suivantes :
+\verbatim
+hdiutil attach SDL_ttf-X.X.X.dmg
+sudo cp -r /Volumes/SDL_ttf/SDL_ttf.framework /Library/Frameworks/
+hdiutil detach /Volumes/SDL_ttf
+\endverbatim
+
+
+
+
+
+\subsubsection install_sdlgfx_macos Installation de SDL_gfx
+
+Téléchargez le code source de la bibliothèque sur le site :
+http://www.ferzkopp.net/joomla/content/view/19/14/
+\verbatim
+cd  $FAKEROOT/src
+tar -xzf SDL_gfx-X.X.tar.gz
+\endverbatim
+
+ATTENTION ! Il faut prendre la version de SDL_gfx prévue pour la version
+1.2 de SDL (il ne faut pas prendre SDL2_gfx qui est prévue pour SDL 2.0) !
+
+Modifiez le configure.in en remplacant les lignes
+\verbatim
+dnl Check for SDL
+AM_PATH_SDL($SDL_VERSION,
+            :,
+        AC_MSG_ERROR([*** SDL version $SDL_VERSION not found!])
+)
+CFLAGS="$CFLAGS $SDL_CFLAGS"
+# Remove dependencies from 'sdl-config' not meant for us libraries:
+SDL_LIBS=$(echo "$SDL_LIBS" |sed -e 's/-lmingw32//' -e 's/-lSDLmain//')
+LIBS="$LIBS $SDL_LIBS"
+\endverbatim
+par les lignes
+\verbatim
+SDL_CFLAGS="-I/Library/Frameworks/SDL.framework/Headers -framework SDL" 
+SDL_LIBS="-framework SDL" 
+CFLAGS="$CFLAGS $SDL_CFLAGS" 
+LIBS="$LIBS $SDL_LIBS -framework SDL"
+\endverbatim
+
+Reconfigurez la bibliothèque en exécutant la commande:
+\verbatim
+cd SDL_gfx-X.X
+autoreconf --install
+\endverbatim
+
+Finissez la compilation et l'installation de la bibliothèque en tapant les commandes suivantes:
+\verbatim
+./configure --prefix=$FAKEROOT --without-x
+make
+make install
+\endverbatim
+
+
+\subsubsection install_cmake_macos Installation de Cmake
+
+Téléchargez le code source de Cmake, contenu dans le fichier cmake-X.X.X.tar.gz situé sur le site :
+http://www.cmake.org/download/
+
+Installez le paquet en tapant les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf cmake-X.X.X.src.tar.gz
+cd cmake-X.X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+\subsubsection install_doxygen_macos Installation de Doxygen
+
+Téléchargez le code source de Doxygen, contenu dans le fichier doxygen-X.X.X.src.tar.gz situé sur le site :
+http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc
+
+Installez le paquet en tapant les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf doxygen-X.X.X.src.tar.gz
+cd doxygen-X.X.X
+cmake -DCMAKE_INSTALL_PREFIX:PATH=$FAKEROOT -G "Unix Makefiles"
+make
+make install
+\endverbatim
+
+\subsection installation_mlv Installation de la bibliothèque MLV
+
+Commencez par télécharger le code source de la bibliothèque MLV.
+Téléchargez la bibliothèque située à l'adresse : 
+@MLV_SOURCE_REPOSITORY@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+
+Installez la bibliothèque en tapant les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+cd @PACKAGE_TARNAME@-@PACKAGE_VERSION@
+./configure --prefix=$FAKEROOT libxml_LIBS=-lxml2 libxml_CFLAGS=-I/usr/include/libxml2
+make
+make install
+\endverbatim
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+// ============================================================================
+
+
+
+
+
+/*!
+\~french
+\page compilation Compiler un programme avec la bibliothèque MLV
+
+- \subpage compilation_linux 
+
+- \subpage compilation_windows
+
+*/
+
+
+
+
+
+// ============================================================================
+
+
+
+
+
+
+
+/*!
+\~french
+\page compilation_linux Compiler un programme utilisant MLV sous Linux ou sous MacOS X
+
+
+\section compilation_linux_rapide Compiler rapidement votre programme 
+
+Pour compiler votre programme, nous allons nous inspirer des exemples proposés
+par la bibliothèque situés dans le répertoire \a /usr/share/doc/mlv/examples .
+
+Pour compiler votre programme \a demo.c, recopiez le \a Makefile 
+situé dans le répertoire \a /usr/share/doc/mlv/examples/beginner/Makefile dans le 
+le répertoire où se trouve \a demo.c. (vous pouvez aussi trouver une version de ce 
+\a makefile à la page : \subpage outils_compilation).
+
+Modifiez le fichier \a Makefile copié en remplaçant la ligne 
+\verbatim
+TARGET=...
+\endverbatim
+par:
+\verbatim 
+TARGET = demo
+\endverbatim
+
+Pour compiler votre programme, il ne vous reste plus qu'à taper la commande
+\verbatim make \endverbatim
+
+Les exemples présents dans le répertoire  \a /usr/share/doc/mlv/examples 
+constituent un bon tutoriel pour apprendre à utiliser la bibliothèque.
+Nous vous conseillons de tous les compiler et de tous les essayer.
+
+\section compilation_linux_gcc Compiler votre programme avec gcc.
+
+La bibliothèque MLV est compatible avec l'outil pkg-config. Vous pouvez donc récupérer les différentes options de compilation en tapant les commandes suivantes:
+
+
+- Pour la compilation: \verbatim pkg-config --cflags MLV \endverbatim
+- Pour les flags de l'édition de liens: \verbatim pkg-config --libs-only-other --libs-only-L MLV \endverbatim
+- Pour les bibliothèques de l'édition de lien: \verbatim pkg-config --libs-only-l MLV \endverbatim
+
+
+Ainsi, si vous avez écrit un programme \a demo.c, vous pouvez le compiler en tapant la commande suivante:
+
+\verbatim
+gcc -Wall `pkg-config --cflags MLV` `pkg-config --libs-only-other --libs-only-L MLV` demo.c `pkg-config --libs-only-l MLV` -o demo
+\endverbatim
+
+Écrire une telle commande s'avère fastidieux, nous vous conseillons donc
+d'utiliser un Makefile.
+
+La page \subpage outils_compilation présente deux exemples de makefile permettant d'automatiser la compilation.
+*/
+
+
+
+
+
+
+
+
+
+
+// ============================================================================
+
+
+
+
+
+
+
+
+
+
+/*!
+\~french
+\page compilation_windows Compiler un programme utilisant MLV sous Windows
+
+Cette page explique comment compiler votre programme de trois façons diférentes:
+- la section \ref compilation_dev_cpp explique comment le faire avec dev-cpp, un autre IDE.
+- la section \ref compilation_code_blocks explique comment compiler votre programme avec Code:Blocks qui est un IDE. (Actuellement cette partie ne fonctionne plus, utilisez dev-cpp à la place)
+- la section \ref compilation_gcc explique quelles sont les options de configurations qu'il faut utiliser pour pouvoir compiler votre programme directement avec gcc.
+
+Si vous ne savez pas quoi choisir, nous vous conseillons de choisir la méthode \ref compilation_dev_cpp qui est la méthode la plus simple à mettre en oeuvre.
+
+
+\section compilation_dev_cpp Compilation à l'aide de Dev-C++
+
+Comencer par installer la bibliothèque MLV avec Dev-C++ en allant à la page : \ref windows_dev_cpp.
+
+Éxécutez le programme \a devcpp.exe et ouvrez les projets concernants les exemples de la bibliothèque MLV ( les exemples se trouvent dans le répertoire : \a MLV_examples).
+
+Vous pouvez compiler puis éxécuter ces différents projets en utilisant la barre d'icône du programme.
+
+Pour créer votre propre projet, recopiez le répertoire, \a mon_projet, éditez le fichier \a mon_projet.dev et adaptez le pour ce que vous voulez faire.
+
+Pour distribuer le programme que vous avez obtenu, il vous suffit de copier le répertoire \a final_product qui se trouve dans le répertoire de votre projet.
+Ce répertoire contient toute l'infrastructure nécessaire au bon fonctionnement du programme. Il n'est pas nécessaire d'installer Dec-C++ pour faire fonctionner
+votre application ainsi crée.
+
+\section compilation_code_blocks Compilation à l'aide de Code::Blocks
+
+Actuellement cette partie ne fonctionne plus, utilisez dev-cpp à la place !
+
+Comencez par installer la bibliothèque MLV avec Code::Blocks en allant à la page : \ref windows_code_blocks.
+
+Éxécutez le programme \a codeblocks.exe et ouvrez les projets concernants les exemples de la bibliothèque MLV ( les exemples se trouvent dans le répertoire : \a MLV_examples ).
+
+Vous pouvez compiler puis éxécuter ces différents projets en cliquant respectivement sur la roue dentée et le triangle de lecture.
+
+Pour créer votre propre projet, ouvrez le projet situé dans le répertoire, \a mon_projet. Puis sauvegardez le projet comme un "user template".
+
+Une fois fait, vous pouvez créer un nouveau projet en utilisant ce template. Attention ! Vous devez créer ce projet dans le même répertoire que le répertoire mon_projet !
+
+Si vous voulez créer votre projet dans un nouveau répertoire, alors vous devez recopier intégralement le contenu de \a mon_projet et le placer dans le nouveau répertoire. Vous pourez alors obtenir votre nouveau projet en utilisant le template créé précédement.
+
+
+Pour distribuer le programme que vous avez obtenu, il vous suffit de copier le répertoire \a final_product qui se trouve dans le répertoire de votre projet.
+Ce répertoire contient toute l'infrastructure nécessaire au bon fonctionnement du programme. Il n'est pas nécessaire d'installer Dec-C++ pour faire fonctionner
+votre application ainsi crée.
+
+
+
+\section compilation_gcc Options de compilation pour gcc
+
+Dans cette section, nous expliquons comment configurer les options de gcc pour
+réaliser un compilation avec gcc.
+
+Code::block et Dec-C++ utilisent le compilateur gcc. 
+Ainsi, les expliquations qui vont suivre correspondent aux configurations présentes
+dans les projets Code:blocks et Dev-C++.
+
+Pour que la compilation de votre programme fonctionne, il faut installer tous les binaries présent dans le paquet @PACKAGE_TARNAME@-@PACKAGE_VERSION@-win32.
+
+Dans ce cas, les options de compilation sout les suivantes :
+- Pour la compilation : \verbatim -I./include \endverbatim
+- Pour les flags de l'édition de liens : \verbatim -L./lib -L./final_product \endverbatim
+- Pour les bibliothèques de l'édition de liens : \verbatim -lMLV-0 -lSDL -lmingw32 -lSDLmain ./lib/libmingwex.a \endverbatim
+
+
+Ainsi, si vous avez écrit un programme \a demo.c, vous pouvez le compiler en tapant la commande suivante:
+
+\verbatim
+gcc -I./include -Wall -O2 -g -L./lib -L./final_product demo.c -lMLV-0 -lSDL -lmingw32 -lSDLmain ./lib/libmingwex.a -o demo
+\endverbatim
+
+*/
+
+
+
+
+
+// ============================================================================
+
+
+
+
+
+
+
+
+
+/*!
+\~french
+\page outils_compilation Outils de compilation automatique
+\section compilation_makefile Compilation simplifiée avec un makefile
+
+Vous pouvez aussi utiliser le makefile suivant, en modifiant le champs TARGET pour mettre le nom de vos différents programmes.
+
+\verbatim
+TARGETS = programme1 programme2 programme3
+
+##########################################################
+
+CFLAGS = -g -O2 -Wall `pkg-config --cflags MLV`
+LDFLAGS = `pkg-config --libs-only-other --libs-only-L MLV`
+LDLIBS = `pkg-config --libs-only-l MLV`
+
+all: $(TARGETS)
+
+clean:
+	-rm -rf $(TARGETS)
+\endverbatim
+
+
+\section compilation_makefile_avance Compilation avancée avec un makefile
+
+Vous pouvez aussi utiliser le makefile suivant, en modifiant les champs TARGET et OBJECTS pour mettre respectivement le nom et les codes sources de votre programme.
+
+\verbatim
+#
+# Mettre ici le nom de votre programme 
+# (il faut que dans OBJECTS il y ait au moins un objet de même nom que TARGET.
+#
+TARGET= main
+
+#
+# Mettre ici l'ensemble des fichiers objets nécessaires aux programmes 
+# (les fichiers peuvent être situés dans des répertoires)
+#
+OBJECTS=  main.o affiche.o
+
+#
+# Mettre ici vos options de compilation.
+#
+CFLAGS= -DDEBUG -g -Wall `pkg-config --cflags MLV`
+
+#
+# Mettre ici les options qui devront être passées à l'éditeur de liens.
+# Par exemple : -L/directory
+#
+LDFLAGS = `pkg-config --libs-only-other --libs-only-L MLV`
+
+#
+# Mettre ici les noms des bibliothèques et leurs locations.
+# Par exemple : -lpthread
+#
+LDLIBS=`pkg-config --libs-only-l MLV`
+
+ 
+###############################################################################
+
+DEPENDS=$(OBJECTS:.o=.d)
+INCLUDE_DEPENDS=$(foreach i,$(DEPENDS),$(wildcard $(i)))
+ 
+all: $(TARGET)
+ 
+$(TARGET): $(DEPENDS) $(OBJECTS)
+	$(CC) -o $@ $(LDFLAGS) $(OBJECTS) $(LDLIBS)
+ 
+%.d:%.c
+	$(CC) -M $(CFLAGS) -MT '$(shell echo "$&lt;" |sed 's,\($*\)\.c,\1.o $@,' )'  < > $@
+ 
+include $(INCLUDE_DEPENDS)
+ 
+clean:
+	-rm -f $(TARGET)
+	-rm -f $(OBJECTS)
+	-rm -f $(DEPENDS)
+\endverbatim
+*/
+
+
+
+
+
+// ============================================================================
+
+
+
+
+/*!
+\~french
+\page documentation Trouver de la documentation sur la bibliothèque
+
+\section documentation_exemples Trouver des exemples simples et progressifs
+
+Un ensemble d'exemples est disponible dans le répertoire:
+
+- Pour linux et MacOSX : \a /usr/share/doc/mlv/examples
+	
+- Pour windows : \a MLV_examples
+	
+par le navigateur web, en allant à la page :
+- <a href="./examples.html">Exemples d'utilisation de la bibliothèque MLV</a>
+
+
+Les démonstrations proposées sont classées en trois niveaux : débutant, moyen, avancé. Les programmes montrent différentes façons d'utiliser la bibliothèque MLV.
+Le code source de ces démonstrations contienent une documentation détaillée des fonctions utilisées dans les programmes.
+
+
+\section documentation_protoype Connaître les prototypes et le fonctionnement des fonctions proposées par MLV
+
+Il est possible d'obtenir une documentation complète de tous les protoypes des fonctions disponnibles dans la bibliothèque MLV en allant sur les pages :
+
+- <a href="./globals_func.html">Liste exausthive de toutes les fonctions de la bibliothèque MLV</a>
+- <a href="./files.html">Liste des fichiers en-têtes de la bibliothèque MLV</a>
+
+
+Sous linux, il est possible d'obtenir une documentation complète de tous les 
+protoypes des fonctions disponnibles dans la bibliothèque MLV en tapant la 
+commande suivante:
+
+\verbatim
+man MLV_all.h
+\endverbatim
+
+Cette commande ouvrira une page de manuel qui liste et décrit toutes les pages 
+de manuels de la bibliothèque MLV.
+Par exemple, vous y trouverez une description des pages MLV_shape.h, MLV_color.h, MLV_image.h, etc ...
+
+Ainsi, si vous tapez
+\verbatim
+man MLV_shape.h
+\endverbatim
+vous ouvrirez une page de manuel contenant la documentation et les prototypes 
+des fonctions qui permettent de dessiner des figures géométriques avec MLV.
+
+*/
+
+
+
+
+
+// ============================================================================
+
+
+
+
+
+/*!
+\~french
+\page documentation_paquet Créer des paquets distribuables de la bibliothèque MLV
+
+- \subpage creer_paquet_linux
+
+- \subpage creer_paquet_windows
+
+- \subpage creer_paquet_macos
+
+*/
+
+
+
+// ============================================================================
+
+
+
+
+
+/*!
+\~french
+\page release_new_version Procédure pour sortir une nouvelle version de MLV
+
+Cette page explique la procédure à suivre pour publier officiellement une 
+nouvelleversion en provenance de la branche de développement de MLV du serveur
+git.
+
+On supposera, dans la suite de ce document que votre depôt git est nettoyé, 
+comme si vous veniez de le cloner.
+
+\section merge_develop_release Fusionner la branche develop dans celle de release
+
+Commencez par fusionner la branche develop dans celle de release :
+\verbatim
+git checkout release
+git merge develop
+\endverbatim
+
+\section change_version Changer le numéro de version
+
+Commencez par enlever le suffixe -dev du numéro de version.
+Pour cela, cherchez la ligne qui commence par,
+\verbatim
+AC_INIT([@PACKAGE_NAME@], [@MLV_CURRENT@.@MLV_REVISION@.@MLV_AGE@-dev], [@PACKAGE_BUGREPORT@], [], [@PACKAGE_URL@])
+\endverbatim
+et remplacez là par
+\verbatim
+AC_INIT([@PACKAGE_NAME@], [@MLV_CURRENT@.@MLV_REVISION@.@MLV_AGE@], [@PACKAGE_BUGREPORT@], [], [@PACKAGE_URL@])
+\endverbatim
+
+Modifiez ensuite les numéros de version <code>mlvcurrent</code>, 
+<code>mlvrevision</code> et <code>mlvage</code> situés dans le fichier 
+<code>configure.ac</code>.
+
+La logique à suivre est expliquée en commentaire dans le fichier.
+Pour cela, vous aurez à conaître les modifications qui ont été réalisé depuis la
+dernière version. POur cela, consultez le fichier <code>ChangeLog</code> situé 
+dans à la racine.
+Regardez les modifications faites dans la version courrente de développement :
+\verbatim
+mlv-@MLV_CURRENT@.@MLV_REVISION@.@MLV_AGE@-dev
+\endverbatim 
+
+Les lignes à modifier sont les suivantes :
+\verbatim
+define([mlvcurrent], [@MLV_CURRENT@])dnl                                                    
+define([mlvrevision], [@MLV_REVISION@])dnl                                                   
+define([mlvage], [@MLV_AGE@])dnl
+\endverbatim
+
+Mettez à jour, dans le fichier <code>configure.ac</code> de la racine de mlv, les versions 
+pour MacOSX et Fedora:
+\verbatim
+AC_SUBST(MLV_MACOSX_VERSION,[@MLV_MACOSX_VERSION@])
+\endverbatim
+Mettez à la place la version actuelle de MacOSX.
+
+\verbatim
+AC_SUBST(MLV_FEDORA_VERSION,[@MLV_FEDORA_VERSION@])
+\endverbatim
+Mettez à la place la version actuelle de Fedora.
+
+\section update_new_todo Mettre à jour les fichiers ChangeLog et todo
+
+Modifiez le fichier <code>ChangeLog</code> situé à la racine de la bibliothèque.
+Pour cela, mettez à jour, le numéro de version apparaissant dans
+la première ligne de ChangeLog. 
+Cette ligne ressemble à :
+\verbatim
+mlv-@MLV_CURRENT@.@MLV_REVISION@.@MLV_AGE@-dev
+\endverbatim
+
+Vous devez mettre le même numéro de version
+que celui que vous avez mis dans la section : \subpage change_version Changer,
+et vous devez enlever le suffixe -dev.
+
+Mettez à jour le fichier <code>todo</code> situé à la racine de la bibliothèque.
+
+Pour la suite du document, pour que les numéros de versions coincident avec les
+nouveaux numéros de version que vous venez de renseigner, nous vous conseillons
+de recompiler la documentation et de continuer avec la nouvelle documentation
+ainsi générée.
+Pour cela tapez les commandes suivantes :
+\verbatim
+make distclean
+./autogen.sh
+./configure
+make
+\endverbatim
+
+La nouvelle version de la page que vous êtes en train de lire se trouve dans 
+le fichier
+\verbatim
+./doc/api/French/html/release_new_version.html
+\endverbatim
+à partir de la racine de la bibliothèque MLV.
+
+\section key_gen Préparer une clé pour signer les différents paquets d'indstallation
+
+Créez uen clé qui servira à signer tous les paquets d'installation.
+Pour cela, tapez la commande suivante :
+\verbatim
+gpg --gen-key
+\endverbatim
+et choisisez une clef RSA de 4096 bits, mettez un temps d'expiration 
+de 3 jours (temps que vous vous donnez pour créer et tester l'ensemble des 
+paquets de distribution) et choisissez comme commentaire: <code>@PACKAGE_TARNAME@-@PACKAGE_VERSION@ key</code>.
+
+
+Vérifier que la clé est dans votre liste de clés en tapant :
+\verbatim
+gpg --list-key
+\endverbatim
+
+Vous devriez obtenir l'affichage suivant :
+\verbatim
+/home/boussica/.gnupg/pubring.gpg
+---------------------------------
+pub   4096R/E594D293 2014-02-25 [expire : 2014-02-28]
+uid                  Adrien Boussicault (@PACKAGE_TARNAME@-@PACKAGE_VERSION@ key) <boussica@labri.fr>
+sub   4096R/4B3F1834 2014-02-25 [expire : 2014-02-28]
+\endverbatim
+
+L'identifiant de la clé est ici <code>E594D293</code>
+
+Exportez la clé publique pour pouvoir la comuniquer à différents utilisateurs
+\verbatim
+gpg --export --armor IDENTIFIANT_CLE > @PACKAGE_TARNAME@-@PACKAGE_VERSION@-packaging-gpg-key-VOTRE_NOM
+\endverbatim
+où <code>IDENTIFIANT_CLE</code> est l'identifiant de la clé vu précédement.
+
+Exportez votre clé privé pour pouvoir l'importer dans toutes les machines qui
+vont créer les paquets de distribution (notament pour debian et fedora).
+\verbatim
+gpg --export-secret-keys --armor IDENTIFIANT_CLE > @PACKAGE_TARNAME@-@PACKAGE_VERSION@-packaging-gpg-secretkey-VOTRE_NOM
+\endverbatim
+où <code>IDENTIFIANT_CLE</code> est l'identifiant de la clé vu précédement.
+
+Vous ne devez JAMAIS comuniquer cette clé. C'est elle qui sert à crypter les 
+messages et à réaliser les signatures de vos paquets.
+
+Archivez dans vos archives personnelles (et secrète) la clé publique et la clé 
+privée.
+
+\section verify_lib Verifiez le bon fonctionnement de la bibliothèque (optionel)
+
+Vérifiez maintenant le bon fonctionement de la bibliothèque.
+
+Pour cela, créez tout les paquets de distribution en suivant les procédures
+présentes à la page :  \subpage documentation_paquet .
+
+Testez ensuite tous les paquets crées et vérifiez le bon fonctionnement des 
+programmes en compilant et testant tous les exemples présents dans le dossier 
+<code>example</code> du dossier de documentation qui a été installé par le paquet.
+Sous linux, il est situé dans <code>/usr/share/doc/mlv/</code>.
+
+Vous prendrez bien soin de bien vérifier que les programmes qui utilisent le son
+fonctionne correctement (notament sous Mac OS X et windows).
+
+Vous vérifiez aussi que la documentation est bien à jour en verifiant que les 
+nouveaux numéros de version sont à jour, notament dans la partie téléchargement
+de la documentation.
+Pour cela, il suffit de suivre les différents liens présents à la page 
+<code>doc/index.html</code>.
+
+
+\section merge_release_master_develop Fusionner la branche release dans master et dans develop
+
+Quand la bibliothèque est prête à être publiée, il ne reste plus qu'à fusionner 
+release dans master.
+
+Commencez par bien vérifier que vous avez sauvegardé les dernières modifications
+de release :
+\verbatim
+git status
+\endverbatim
+
+Ensuite, procédez à la fusion de merge dans master en tapant :
+\verbatim
+git checkout master
+git merge release
+\endverbatim
+
+Ajouter un tag pour préciser que ce dernier commit est une nouvelle version.
+\verbatim
+git tag -a v@MLV_CURRENT@.@MLV_REVISION@.@MLV_AGE@ -m 'The version @MLV_CURRENT@.@MLV_REVISION@.@MLV_AGE@ of MLV.'
+\endverbatim
+où @MLV_CURRENT@.@MLV_REVISION@.@MLV_AGE@ est normalement le nouveau numéro de 
+version de la bibliothèque. Si ce n'est pas le cas, c'est que vous n'avez
+pas recompilé cette documentation après avoir changé les numéros de 
+version.
+
+Vous pouvez éventuellement, ajoutez des commentaires dans l'opition -m.
+
+Il ne reste plus qu'à envoyer tous les changements sur le dépot git.
+\verbatim
+git push --follow-tags
+\endverbatim
+
+Il ne rest plus qu'à mettre en place une nouvelle version en developpement.
+Commencez par mettre à jour la branche de developpement :
+\verbatim
+git checkout develop
+git merge release
+\endverbatim
+
+Mettez à jour le numéro de version : dans le fichier <code>configure.ac</code> 
+ajoutez le suffixe -dev au numéro de version. Pour cela, cherchez la ligne
+\verbatim
+AC_INIT([@PACKAGE_NAME@], [@MLV_CURRENT@.@MLV_REVISION@.@MLV_AGE@], [@PACKAGE_BUGREPORT@], [], [@PACKAGE_URL@])
+\endverbatim
+
+et remplacez-là par
+\verbatim
+AC_INIT([@PACKAGE_NAME@], [@MLV_CURRENT@.@MLV_REVISION@.@MLV_AGE@-dev], [@PACKAGE_BUGREPORT@], [], [@PACKAGE_URL@])
+\endverbatim
+
+Enfin, créer un nouveau paragraphe dans le fichier <code>ChangeLog</code> 
+situé à la racine de la bibliothèque.
+Ce paragraphe doit commencer par :
+\verbatim
+mlv-@MLV_CURRENT@.@MLV_REVISION@.@MLV_AGE@-dev
+\endverbatim
+Normalement, ce paragraphe ne doit pas déjà exister. Si c'est le cas, c'est 
+que vous n'avez pas recompilé cette documentation après avoir mis à jour les
+numéros de version.
+
+Mettez à jour le fichier <code>todo</code> situé à la racine de la bibliothèque.
+
+Enregistrez dans git les modifications, en mettant le commentaire d'une ligne
+"New developement version of MLV." lorsque cela est demandé :
+\verbatim
+git add configure.ac
+git commit
+\endverbatim
+
+Enfin envoyez les modification sur le serveur git officiel.
+\verbatim
+git push
+\endverbatim
+
+Basculez de nouveau sur la branche master, pour la suite de document.
+\verbatim
+git checkout master
+\endverbatim
+
+
+\section build_package Créer les nouveaux paquets de distributions
+
+Vérifiez que vous êtes bien sur la branche master du depot git de MLV.
+Tapez les commandes :
+\verbatim
+git checkout master   # pour charger la branche master
+git status            # pour vérifier que vous êtes sur la branche master
+\endverbatim
+
+Commencez par créer un paquet de distribution pour le code source,
+ à partir de la branche master :
+\verbatim
+./configure
+make dist
+\endverbatim
+
+Normalement le fichier <code>@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz</code>
+a du être créé.
+Il est très important d'exécuter le script <code>./configure</code>, même s'il 
+existait déjà. En effet, son exécution permet de mettre à jour le numéro de 
+révision git situé dans le code source.
+
+Ensuite, à partir de ce dernier fichier, recréez l'ensemble des paquets de 
+distribution.
+
+Pour cela vous pouvez utiliser l'émulateur <code>virt-manageur</code> pour 
+installer localement une debian 32 bit, une debian 64 bit, un fedora 32 bits et 
+64 bits.
+
+Pour chaque distribution (debian, fedora, window, MacOSX), créez des paquets 
+d'installation en suivant les instructions suivantes :
+- utilisez les procédure de créations des paquets de la page \subpage documentation_paquet 
+- quand, dans ces procédures, une clée pour signer des fichiers est utilisée, vous 
+  devez toujours utiliser la clé 
+  <code>@PACKAGE_TARNAME@-@PACKAGE_VERSION@-packaging-gpg-secretkey-VOTRE_NOM</code>, 
+  qui a été générée précédement. Pour importer cette clé, il vous suffit de taper
+  la commande suivante :
+  \verbatim
+  gpg --import @PACKAGE_TARNAME@-@PACKAGE_VERSION@-packaging-gpg-secretkey-VOTRE_NOM
+  \endverbatim
+
+
+Vérifiez le bon fonctionnement de ces paquets.
+
+\section update_web_site Mettre a jour le site web officiel
+
+Commencez par créer deux dossiers : <code>depot</code> et <code>site</code>, 
+dans le répertoire <code>/tmp</code>.
+
+Dans le dossier <code>depot</code>, créez un dossier 
+<code>@PACKAGE_TARNAME@-@PACKAGE_VERSION@</code>.
+
+Mettez dans le dossier <code>depot</code> le fichier 
+<code>@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz</code>.
+
+Ensuite, mettez les fichiers suivants, dans le dossier 
+<code>depot/@PACKAGE_TARNAME@-@PACKAGE_VERSION@</code>:
+\verbatim
+@MLV_DEBIAN_32_BINARY_PACKAGE@
+@MLV_DEBIAN_32_DEV_PACKAGE@
+@MLV_DEBIAN_64_BINARY_PACKAGE@
+@MLV_DEBIAN_64_DEV_PACKAGE@
+@MLV_FEDORA_32_BINARY_PACKAGE@
+@MLV_FEDORA_32_DEV_PACKAGE@
+@MLV_FEDORA_32_STATIC_PACKAGE@
+@MLV_FEDORA_32_SOURCE_PACKAGE@
+@MLV_FEDORA_64_BINARY_PACKAGE@
+@MLV_FEDORA_64_DEV_PACKAGE@
+@MLV_FEDORA_64_STATIC_PACKAGE@
+@MLV_FEDORA_64_SOURCE_PACKAGE@
+@MLV_FEDORA_KEY_PACKAGE@
+@MLV_WIN_32_BINARIES@
+@MLV_CODEBLOCKS_32_PACKAGE@
+@MLV_DEVCPP_32_PACKAGE@
+@MLV_MACOSX_PACKAGE@
+@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+\endverbatim
+N'oubliez surtout pas de mettre de nouveau le fichier <code>@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz</code>.
+
+Il faut maintenant signer tous les fichiers qui n'ont pas encore été signés :
+\verbatim
+cd /tmp/depot
+gpg -b --use-agent --local-user IDENTIFIANT_CLE @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+cd /tmp/depot/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
+gpg -b --use-agent --local-user IDENTIFIANT_CLE @MLV_WIN_32_BINARIES@
+gpg -b --use-agent --local-user IDENTIFIANT_CLE @MLV_CODEBLOCKS_32_PACKAGE@
+gpg -b --use-agent --local-user IDENTIFIANT_CLE @MLV_DEVCPP_32_PACKAGE@
+gpg -b --use-agent --local-user IDENTIFIANT_CLE @MLV_MACOSX_PACKAGE@
+gpg -b --use-agent --local-user IDENTIFIANT_CLE @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+\endverbatim
+où <code>IDENtiFIANT_CLE</code> est l'identifiant de la clé créé dans la partie 
+"Préparer une clé pour signer ...".
+
+Puis on vérifie les signatures créés :
+\verbatim
+cd /tmp/depot
+gpg  --verify @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz.sig
+cd /tmp/depot/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
+gpg --verify @MLV_WIN_32_BINARIES@.sig
+gpg --verify @MLV_CODEBLOCKS_32_PACKAGE@.sig
+gpg --verify @MLV_DEVCPP_32_PACKAGE@.sig
+gpg --verify @MLV_MACOSX_PACKAGE@.sig
+gpg --verify @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz.sig
+\endverbatim
+
+Copiez le fichier <code>@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz</code> dans 
+le dossier <code>/tmp</code> et générez la documentation de la bibliothèque en
+tapant les commandes suivantes:
+\verbatim
+cd /tmp
+tar -xzf @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+cd @PACKAGE_TARNAME@-@PACKAGE_VERSION@
+./configure
+make 
+cp -r doc/api /tmp/depot/@PACKAGE_TARNAME@-@PACKAGE_VERSION@/
+\endverbatim
+
+Enfin, ajouter les programmes d'installation des ide Code-blocks et Dev-cpp en 
+prenant soin de mettre la version de l'installateur correspondant au numéro de 
+version qui se trouve sur la documentation.
+
+Préparons maintenant le code source du site. Pour cela, tapez les commandes
+suivantes
+\verbatim
+cd /tmp/@PACKAGE_TARNAME@-@PACKAGE_VERSION@/doc
+cp -r index.html api /tmp/site
+\endverbatim
+
+Il ne reste plus qu'à télécharger les fichiers de distributions sur le serveur 
+de Savannah en tapant les commandes suivantes :
+\verbatim
+cd /tmp/depot/
+chmod 644 *
+rsync -av /tmp/depot/. LOGIN@dl.sv.nongnu.org:/releases/mlv/.
+\endverbatim
+où LOGIN est votre login de developpeur et le mot de passe celui de votre clé 
+RSA donné pour accéder au dépot git.
+
+Il faut maintenant mettre à jour le site web.
+Commencez par monter le dossier du code source de @PACKAGE_URL@ sur le dossier 
+DOSSIER_SITE_WEB.
+Puis, tapez la commande suivante :
+\verbatim
+rsync -av --delete /tmp/site/. LE_SITE_WEB
+\endverbatim
+
+\section verify_documentation Verifier la documentation et les fichiers publiés officiellement
+
+Testez un à un tous les liens présents dans la section téléchargement de la 
+documentation.
+
+Vérifiez que les paquets s'installent correctement et vérifiez que les 
+exemples s'executent correctement.
+
+Vérifiez que, lors de l'exécution du programme 
+<code>example/beginner/10_library_information</code>,
+le numéro de version et la révision git qui apparaît à l'écran, correspond bien
+à la révision courante présente dans la branche master du dépôt git.
+*/
+
+
+
+/*!
+\~french
+\page fix_a_bug
+Procédure pour corriger un bug dans la version courante de MLV
+
+\section fix_hot_bug Le bug est urgent et doit être corrigé dans la version courante
+
+\subsection bug_branch_from_master  Créer une branche du nom du bug à partir de master avec la correction du bug
+
+\subsection fix_the_bug Corriger le bug
+
+\subsection change_bug_version Changer le numéro de version
+
+\subsection update_bug_news_bug_todo Mettre a jour les fichiers NEWS et TODO
+
+\subsection verify_bug Verfifer le bon fonctionnement de la bibliothèque (optionel)
+
+\subsection merge_bug_master Fusionner la branche du bug dans master et l'appliquer dans develop
+
+\subsection build_bug_package Créer les nouveaux paquets de distributions
+
+\subsection update_web_site_bug Mettre a jour le site web officiel
+
+
+\section fix_no_hot_bug Le bug peut être corrigé dans la prochaine version
+
+\subsection bug_branch_from_develop Créer une branche du nom du bug à partir de master avec la correction du bug
+
+\subsection fix_the_no_hot_bug Corriger le bug
+
+\subsection merge_bug_branch_into_develop Fusionner la branche dans develop
+ 
+*/
+
+
+// ============================================================================
+
+
+
+
+
+
+/*!
+\~french
+\page creer_paquet_linux Créer des paquets contenant la bibliothèque MLV pour les distributions Linux
+
+\section Sommaire
+
+- \ref paquet_debian
+- \ref paquet_fedora
+
+\section paquet_debian Créer des paquets debian
+
+Pour pouvoir réaliser les manipulations suivantes, vous devez avoir une machine 
+installée sous debian ou ubuntu. Vous devez aussi avoir installé les paquets 
+suivants:
+- doxygen,
+- build-essential,
+- libsdl-gfx1.2-dev,
+- libsdl1.2-dev, 
+- libsdl-mixer1.2-dev, 
+- libsdl-ttf2.0-dev, 
+- libsdl-image1.2-dev, 
+- libglib2.0-dev,
+- libxml2-dev,
+- debhelper,
+- autotools-dev,
+- fakeroot.
+
+Pour cela tapez la commande suivante :
+\verbatim
+sudo apt-get install doxygen build-essential libsdl-gfx1.2-dev libsdl1.2-dev 
+sudo apt-get install libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl-image1.2-dev 
+sudo apt-get install libglib2.0-dev libxml2-dev debhelper autotools-dev fakeroot
+\endverbatim
+
+Pour créer des paquets debian, vous devez commmencer par télécharger la 
+bibliothèque MLV à l'addresse suivante : 
+<a href="@MLV_SOURCE_REPOSITORY@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz">@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz</a>.
+
+Décompressez la bibliothèque en tapant la commande:
+\verbatim
+tar -xzf @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+\endverbatim
+
+Il est très important de réaliser les opérations qui vont suivre à partir du 
+dossier @PACKAGE_TARNAME@-@PACKAGE_VERSION@ issu de la décompression du fichier 
+@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz.
+Si vous le faite à partir du dossier du dépot git de MLV, cela ne fonctionnera 
+pas.
+
+Pour créer les paquets debian, vous allez utiliser un script prévu à cet effet.
+Pour utiliser ce script, il faut commencer par le générer en tapant les commandes suivantes:
+\verbatim
+cd @PACKAGE_TARNAME@-@PACKAGE_VERSION@
+./configure
+\endverbatim
+
+Le script a été généré dans le répertoire packaging/debian/ et il s'appelle script_pkg.
+Maintenant déplacez-vous dans le répertoire du script en tapant la commande:
+\verbatim
+cd packaging/debian
+\endverbatim
+
+Modifiez le fichier <code>debian/control</code> et remplissez correctement le 
+champs :
+\verbatim
+Maintainer: Unknow Maintener <unknown.maintenener@univ-mlv.fr>;
+\endverbatim
+
+Tous les fichiers et scripts sont prêt.
+Avant de créer les paquets, il faut créer une clé pour signer le paquet.
+Pour cela, tapez la commande suivante:
+\verbatim
+gpg --gen-key
+\endverbatim
+
+Répondez aux questions.
+Si vous ne savez pas quoi répondre, choisissez les réponses par default.
+
+Vous pouvez aussi importer une clé privée que vous avez déjà créé préalablement.
+Il suffit de taper, à la place de la commande, la ligne suivante :
+\verbatim
+gpg --import FICHIER_CLE_PRIVEE
+\endverbatim
+
+Listez les clés que vous possédez en tapant la commande:
+\verbatim
+gpg --list-keys
+\endverbatim
+
+Vous devez obtenir un fichier qui ressemnle à ceci:
+\verbatim
+pub   4096R/A4812E81 2012-07-06 [expire: 2014-07-06]
+uid                  Adrien Boussicault (Clé pour les paquets d'installation de MLV) <boussica@labri.fr>
+sub   4096R/CA53E162 2012-07-06 [expire: 2014-07-06]
+\endverbatim
+
+Vous pouvez enfin créer le paquet en tapant:
+\verbatim
+./script_pkg -k XXX 
+\endverbatim
+où XXX est l'id de votre clé. Dans mon exemple, XXX=A4812E81.
+
+Si tout c'est bien passé, deux paquets ont été créés :
+- @MLV_DEBIAN_X_BINARY_PACKAGE@
+- @MLV_DEBIAN_X_DEV_PACKAGE@
+dans le répertoire courant, où X vaut i386 ou amd64 selon l'architecture 
+(32 ou 64 bits) de votre ordinateur.
+
+
+
+
+\section paquet_fedora Créer des paquets fedora
+
+Dans cette partie, nous supposerons que vous possédez d'un ordinateur sur lequel 
+est correctement installée et mise à jour une fedora.
+
+Commencez par installer les différents outils permettant de créer des paquets 
+RPM en installant les paquets suivants:
+\verbatim
+su
+yum install rpmdevtools yum-utils rpm-sign
+exit
+\endverbatim
+
+Nous allons maintenant créer l'environnement de travail. Tapez la commande 
+suivante pour créer les dossiers où seront déposés les différents paquets créés:
+
+\verbatim
+cd ~/
+rpmdev-setuptree
+\endverbatim
+
+Vérifiez que cette commande a créé les repertoires:
+\verbatim
+rpmbuild/
+├── BUILD
+├── RPMS
+├── SOURCES
+├── SPECS
+└── SRPMS
+\endverbatim
+
+et le fichier <code>.rpmmacros</code>.
+
+
+Éditez le fichier <code>.rpmmacros</code> et ajoutez les champs suivants en 
+prenant soin de les adapter à votre utilisation:
+
+\verbatim
+%vendor                 Votre Nom
+%packager               Plus d'information
+%dist                   .@MLV_FEDORA_CODE_VERSION@
+%fedora                 @MLV_FEDORA_VERSION@
+\endverbatim
+
+Les champs <code>dist</code> et <code>fedora</code> décrivent la distribution et
+son numero de version.
+
+
+Nous allons maintenant préparer les outils pour pouvoir signer les paquets créés.
+Commencez par generer une clé gpg:
+\verbatim
+gpg --gen-key
+\endverbatim
+
+Répondez aux questions.
+Si vous ne savez pas quoi répondre, choisissez les réponses par default.
+
+Vous pouvez aussi importer une clé privée que vous avez déjà créée préalablement.
+Il suffit de taper, à la place de la précédente commande, la ligne suivante :
+\verbatim
+gpg --import FICHIER_CLE_PRIVEE
+\endverbatim
+
+Vérifier que la clé est dans votre liste de clés en tapant :
+\verbatim
+gpg --list-key
+\endverbatim
+
+Vous devriez obtenir l'affichage suivant :
+\verbatim
+/home/boussica/.gnupg/pubring.gpg
+---------------------------------
+pub   4096R/E594D293 2014-02-25 [expire : 2014-02-28]
+uid                  Adrien Boussicault (@PACKAGE_TARNAME@-@PACKAGE_VERSION@ key) <boussica@labri.fr>
+sub   4096R/4B3F1834 2014-02-25 [expire : 2014-02-28]
+\endverbatim
+
+L'identifiant de la clé est ici <code>E594D293</code>
+
+Modifiez le fichier <code>.rpmmacros</code> pour indiquer l'emplacement des clés
+crées et le nom qui a été utilisé lors de la création de la clé : 
+
+\verbatim
+%_signature             gpg
+%_gpg_name              Votre Nom
+%_gpg_path              %(echo $HOME)/.gnupg
+\endverbatim
+
+Exporter la clé publique afin de la comuniquer aux utilisateurs
+
+\verbatim
+gpg2 --export --armor IDENTIFIANT_CLE > RPM-GPG-KEY-Votre_nom
+\endverbatim
+où identifiant clé est l'identifiant précédent.
+
+Commencez par installer tous les programmes et bibliothèques nécessaires pour 
+compiler, installer et créer les paquets rpm de la bibliothèque MLV.
+Pour cela, tapez la commande suivante:
+
+\verbatim
+su
+yum install SDL-devel SDL_mixer-devel SDL_image-devel libxml2-devel SDL_ttf-devel SDL_gfx-devel glib2-devel doxygen gcc make pkgconfig
+exit
+\endverbatim
+
+Pour créer les paquets rpm, vous devez commencer par télécharger la 
+bibliothèque MLV à l'addresse suivante : 
+<a href="@MLV_SOURCE_REPOSITORY@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz">@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz</a>.
+
+Décompressez la bibliothèque et copiez les fichiers suivants:
+
+\verbatim
+tar -xzf @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+\endverbatim
+
+Configurez la bibliothèque pour générer les scripts permettant de créer les paquets pour fedora.
+\verbatim
+cd @PACKAGE_TARNAME@-@PACKAGE_VERSION@
+./configure
+cd ..
+\endverbatim
+
+Installer la bibliothèque et les script dans le dossier qui construira le paquet pour fedora.
+\verbatim
+cp @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz rpmbuild/SOURCES
+cp @PACKAGE_TARNAME@-@PACKAGE_VERSION@/packaging/fedora/rpmbuild/SPECS/@PACKAGE_TARNAME@.spec rpmbuild/SPECS
+\endverbatim
+
+Créez le paquet rpm en tapant les lignes de commandes suivantes:
+
+\verbatim
+cd rpmbuild/SPECS
+rpmbuild -bp @PACKAGE_TARNAME@.spec
+rpmbuild -bc --short-circuit @PACKAGE_TARNAME@.spec
+rpmbuild -bi --short-circuit @PACKAGE_TARNAME@.spec
+rpmbuild -ba @PACKAGE_TARNAME@.spec
+\endverbatim
+
+Si vous utilisez une fedora 32 bits, le processus a créé quatres paquets rpm :
+
+- ~/rpmbuild/RPMS/i686/@MLV_FEDORA_32_BINARY_PACKAGE@
+- ~/rpmbuild/RPMS/i686/@MLV_FEDORA_32_DEV_PACKAGE@
+- ~/rpmbuild/RPMS/i686/@MLV_FEDORA_32_STATIC_PACKAGE@
+- ~/rpmbuild/SRPMS/@MLV_FEDORA_32_SOURCE_PACKAGE@
+
+Si vous utilisez une fedora 64 bits, le processus a créé quatres paquets rpm :
+
+- ~/rpmbuild/RPMS/x86_64/@MLV_FEDORA_64_BINARY_PACKAGE@
+- ~/rpmbuild/RPMS/x86_64/@MLV_FEDORA_64_DEV_PACKAGE@
+- ~/rpmbuild/RPMS/x86_64/@MLV_FEDORA_64_STATIC_PACKAGE@
+- ~/rpmbuild/SRPMS/@MLV_FEDORA_64_SOURCE_PACKAGE@
+
+Il ne vous reste plus qu'à signer les paquets pour garantir leurs intégrités.
+Pour cela, tapez les commandes suivantes (pour une fedora 64 bits):
+
+\verbatim
+cd ~
+rpmsign --addsign rpmbuild/RPMS/x86_64/@MLV_FEDORA_64_BINARY_PACKAGE@
+rpmsign --addsign rpmbuild/RPMS/x86_64/@MLV_FEDORA_64_DEV_PACKAGE@
+rpmsign --addsign rpmbuild/RPMS/x86_64/@MLV_FEDORA_64_STATIC_PACKAGE@
+rpmsign --addsign rpmbuild/SRPMS/@MLV_FEDORA_64_SOURCE_PACKAGE@
+\endverbatim
+
+La clé utilisé pour la signature est celle qui a pour nom, le nom du champ <code>%_gpg_name</code>
+dans le fichier <code>.rpmmacros</code>.
+
+Les paquets RPM pour fedora sont enfin prêt.
+Vous pouvez maintenant les tester en suivant la procédure d'installation 
+présente à la page :
+\subpage installation_fedora .
+
+*/
+
+
+
+
+// ============================================================================
+
+
+
+
+
+
+
+/*!
+\~french
+\page creer_paquet_windows Créer des paquets contenant la bibliothèque MLV pour Windows
+
+Cette page explique comment créer des paquets de distribution pour Windows.
+
+Il y a trois types de paquets :
+- les binaires windows, qui contienent la bibliothèque MLV sous forme de binaires.
+- le paquet pour Code::Blocks, qui contient un projet Code:Blocks utilisant la bibliothèque MLV.
+Dans ce paquet est inclu les binaires windows de la bibliothèque ainsi que des exemples d'utilisation de la bibliothèque.
+- le paquet pour dev-cpp, qui contient un projet dev-cpp utilisant la bibliothèque MLV.
+Dans ce paquet est inclu les binaires windows de la bibliothèque ainsi que des exemples d'utilisation de la bibliothèque.
+
+Les quatres parties 
+
+- \ref packaging_windows_prerequis
+- \ref packaging_windows_binaire 
+- \ref packaging_windows_code_blocks
+- \ref packaging_windows_dev_cpp
+
+expliquent comment construire ces 3 paquets.
+
+La dernière section (la section \ref packaging_windows_from_scratch)
+explique comment créer à la main l'infrastructure de cross-compilation linux-windows.
+Cette partie est très technique et fastidieuse.
+Nous vous conseillons de ne pas utiliser cette dernière partie, sauf cas particuliers.
+
+\section packaging_windows_prerequis Prérequis pour créer des paquets MLV pour Windows
+
+Les scripts de compilation pour créer des paquets MLV ont été prévus pour s'exécuter sous Ubuntu.
+Vous devez donc utiliser Ubuntu pour pouvoir continuer.
+
+Vous devez ensuite installer des paquets pour la compilation avec mingw en tapant la commande suivante:
+\verbatim
+sudo apt-get install mingw-w64
+\endverbatim
+
+Ensuite, vous devez ne pas oublier d'installer les logiciels de compilation et de compression usuels:
+\verbatim
+sudo apt-get install build-essential zip unzip
+\endverbatim
+
+
+\section packaging_windows_binaire Créer un paquet MLV pour Windows ne contenant que les binaires de la bibliothèque
+
+Comencez par suivre la procédure d'installation de la section \ref packaging_windows_prerequis.
+
+Ensuite, allez dans le repertoire packaging/windows , puis tapez la commande suivante:
+\verbatim
+./create_win32_binaries
+\endverbatim
+
+La création du paquet peut prendre pas mal de temps.
+Ne vous inquiétez pas et prenez votre mal en patiente.
+
+Si tout ce passe bien, vous devez obtenir un fichier @PACKAGE_TARNAME@-@PACKAGE_VERSION@-win32.zip contenant les binaires pour Windows de la bibliothèque MLV.
+
+
+
+\section packaging_windows_code_blocks Créer un paquet MLV pour Windows contenant un projet Code::Blocks
+
+Comencez par suivre la procédure d'installation de la section \ref packaging_windows_prerequis.
+
+Ensuite, allez dans le repertoire packaging/windows , puis tapez la commande suivante:
+\verbatim
+./create_code_blocks_package
+\endverbatim
+
+La création du paquet peut prendre pas mal de temps.
+Ne vous inquiétez pas et prenez votre mal en patiente.
+
+Si tout ce passe bien, vous devez obtenir un fichier @PACKAGE_TARNAME@-@PACKAGE_VERSION@-code_blocks.zip contenant les binaires pour Windows de la bibliothèque MLV.
+
+
+
+
+
+\section packaging_windows_dev_cpp Créer un paquet MLV pour Windows contenant un projet dev-cpp
+
+Comencez par suivre la procédure d'installation de la section \ref packaging_windows_prerequis.
+
+Ensuite, allez dans le repertoire packaging/windows , puis tapez la commande suivante:
+\verbatim
+./create_dev_cpp_package
+\endverbatim
+
+La création du paquet peut prendre pas mal de temps.
+Ne vous inquiétez pas et prenez votre mal en patiente.
+
+Si tout ce passe bien, vous devez obtenir un fichier @PACKAGE_TARNAME@-@PACKAGE_VERSION@-dev-cpp.zip contenant les binaires pour Windows de la bibliothèque MLV.
+
+
+\section packaging_windows_from_scratch Créer une infrastructure de Cross-Compilation Linux-Widows pour MLV
+
+Un platforme de compilation Linux-Windows pour MLV est fournie dans
+le fichier packaging/windows/cross-compilation/cross-compilation-x86.tar.xz.
+
+Une documentation sera bientôt disponnible pour expliquer comment réaliser cette
+platforme.
+
+*/
+
+
+
+
+// ============================================================================
+
+
+
+
+
+
+
+
+/*!
+\~french
+\page creer_paquet_macos Créer des paquets contenant la bibliothèque MLV pour MacOS X
+
+Dans cette partie, nous allons expliquer comment créer des paquets d'installation pour MacOS X à l'aide de l'outil PackageMaker.
+
+Pour pouvoir créer ces paquets, nous allons compiler et installer des outils et des bibliothèques nécessaires à la compilation, l'installation et l'exécution de la bibliothèque MLV.
+
+Avant d'être mis en paquet, ces bibliothèques et ces outils doivent être installés dans différents répertoires :
+ - Les outils et bibliothèques nécessaires uniquement à la compilation de MLV sont installés dans le répertoire $HOME/fakeroot_to_compile_@PACKAGE_TARNAME@-@PACKAGE_VERSION@;
+ - Les bibliothèques et les outils nécessaires à l'utilisation de MLV sont installés simultanément dans /usr et dans $HOME/@PACKAGE_TARNAME@-@PACKAGE_VERSION@_macos-@MLV_MACOSX_VERSION@.
+
+Le repertoire fakeroot_to_compile_@PACKAGE_TARNAME@-@PACKAGE_VERSION@ est un repertoire temporaire de construction.
+Le repertoire /usr est le repertoire d'installation de la bibliothèque.
+Dans notre cas, il est utilisé pour pouvoir configurer et tester en conditions réelles l'infrastructure MLV.
+Le repertoire $HOME/@PACKAGE_TARNAME@-@PACKAGE_VERSION@_macos-@MLV_MACOSX_VERSION@ contient exactement les même composantes que ceux qui sont installées dans /usr.
+Nous utiliserons ce dernier repertoire pour construire le paquet d'installation pour MacOS X.
+
+Il est important de travailler avec les deux repertoires /usr et $HOME/@PACKAGE_TARNAME@-@PACKAGE_VERSION@_macos-@MLV_MACOSX_VERSION@.
+En effet, /usr fait partie du système d'exploitation et contient déjà d'autres bibliothèques.
+On ne peut donc pas distribuer /usr, d'où l'obligation de créer une copie de /usr qui ne contient que l'infrastucture de MLV.
+
+Il est important de noter que nous allons modifier /usr.
+Pour ce faire, nous devrons utiliser les droits "administrateur".
+Il faudra donc être extrèmement vigilant car une mauvaise manipulation dans /usr peu détruire le système tout entier.
+
+
+\section compilation_tools_paquet_macos Préparation et installation de la chaîne de compilation pour la bibliothèque MLV
+
+Commencez par créer les repetroires d'installation en tapant les commandes suivantes : 
+
+
+
+
+\subsection install_tool_macos Installation des outils de développement de MacOSX
+
+Commencez par installer l'environnement de programmation d'Apple. 
+Pour cela, au choix, 
+- Installez Xcode depuis le site de téléchargement de Apple.
+- chargez le second dvd d'installation du système d'exploitation de 
+votre ordinateur, puis installez XCode Tool.
+
+Cet environnement contient entre autre gcc, et make.
+
+\subsection install_env_macos Mise en place d'un environnement de développement pour MLV
+
+Nous allons installer la bibliothèque MLV ainsi que ses dépendances dans un 
+répertoire de votre dossier personnel.
+
+Créez les répertoires suivants en tapant les commandes suivantes :
+
+\verbatim
+mkdir $HOME/fakeroot_to_compile_@PACKAGE_TARNAME@-@PACKAGE_VERSION@
+mkdir $HOME/fakeroot_to_compile_@PACKAGE_TARNAME@-@PACKAGE_VERSION@/src
+mkdir $HOME/@PACKAGE_TARNAME@-@PACKAGE_VERSION@_macos-@MLV_MACOSX_VERSION@
+\endverbatim
+
+Il est nécessaire de configurer le système d'exploitation, pour qu'il sache 
+que de nouvelles bibliothèques sont installées dans le répertoire fakeroot.
+Pour cela, il suffit de définir quelques variables d'environnement dans un 
+fichier qui est exécuté à chaque démarrage du terminal.
+
+Ce fichier est $HOME/.bash_profile
+
+Ajoutez, à la fin du fichier, les commandes suivantes:
+
+\verbatim
+export FAKEROOT="$HOME/fakeroot_to_compile_@PACKAGE_TARNAME@-@PACKAGE_VERSION@" 
+export SYSROOT="/usr" 
+export LOCALSYSROOT="/usr/local/MLV" 
+export MACOS_PACKAGE="$HOME/@PACKAGE_TARNAME@-@PACKAGE_VERSION@_macos-@MLV_MACOSX_VERSION@"
+export PATH="$FAKEROOT/bin:$LOCALSYSROOT/bin:$SYSROOT/bin:$PATH"
+export DYLD_LIBRARY_PATH="$FAKEROOT/lib:$LOCALSYSROOT/lib:$SYSROOT/lib:$DYLD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="$FAKEROOT/lib/pkgconfig:$LOCALSYSROOT/lib/pkgconfig:$SYSROOT/lib/pkgconfig:$PKG_CONFIG_PATH"
+export LD_LIBRARY_PATH="$FAKEROOT/lib:$LOCALSYSROOT/lib:$SYSROOT/lib:$LD_LIBRARY_PATH"
+export ACLOCAL="aclocal -I $FAKEROOT/share/aclocal  -I $LOCALSYSROOT/share/aclocal  -I $SYSROOT/share/aclocal  -I /usr/share/aclocal"
+export PKG_CONFIG="$SYSROOT/bin/pkg-config"
+export CPPFLAGS="-I$FAKEROOT/include -I$LOCALSYSROOT/include -I$SYSROOT/include"
+export LDFLAGS="-L$FAKEROOT/lib -L$LOCALSYSROOT/lib -L$SYSROOT/lib"
+\endverbatim
+
+Si le fichier n'existe pas, créez le.
+
+
+Vous devez maintenant redémarrer votre terminal pour prendre en compte les changements.
+
+Vérifiez que les variables d'environnement ont bien été installées en tapant la commande:
+
+\verbatim
+export
+\endverbatim
+
+qui devrait afficher toutes les variables d'environnement existantes.
+
+Vous pouvez aussi les examiner une à une en tapant la commande:
+
+\verbatim
+echo $FAKEROOT
+echo $PATH
+etc ...
+\endverbatim
+
+
+\subsection install_dep_paquet_macos Installation des dépendances de MLV
+
+Nous allons maintenant installer différents programmes et bibliothèques qui 
+sont nécessaires au fonctionnement de MLV.
+
+
+\subsubsection install_pkg_paquet_macos Installation de pkg-config
+
+Commencez par télécharger pkg-config-X.X.tar.gz en allant sur le site :
+
+http://pkgconfig.freedesktop.org/releases/
+
+et en le mettant dans le répertoire $FAKEROOT/src.
+
+Il est important de PRENDRE LA DERNIÈRE VERSION DE PKG-CONFIG.
+En effet, pkg-config utilise une autre bibliothèque qui n'est jamais incluse 
+dans les anciennes versions.
+
+Désarchivez le fichier en tapant la ligne de commande suivante:
+
+\verbatim
+cd $FAKEROOT/src
+tar -xzf pkg-config-X.X.tar.gz
+\endverbatim
+
+où X.X est le numéro de la version de la bibliothèque que vous avez téléchargé.
+
+Nous allons maintenant compiler pkg-config :
+
+\verbatim
+cd ./pkg-config-X.X
+./configure --with-internal-glib --prefix=$SYSROOT
+make
+\endverbatim
+
+La deuxième ligne de commande configure le code source de pkg-config pour que 
+le code source prenne en compte les caractéristiques de l'architecture de votre 
+ordinateur.
+L'option --prefix permet de dire au code source que le résultat de la 
+compilation doit être installé dans le répertoire $SYSROOT, car c'est un outil qui sera necessaire à la compilation de MLV, mais aussi à l'utilisation de MLV.
+La 3ème commande compile le programme.
+
+Installez la bibliothèque.
+Pour cela, tapez la commande :
+\verbatim
+sudo make install
+\endverbatim
+
+Comme vous modifiez le sytème (à cause du --prefix=$SYSROOT), l'ordinateur vous demande un mot de passe.
+Tapez le mot de passe administrateur de l'ordinateur (ne vous inquiétez pas si le mot de passe ne s'affiche pas).
+
+Installez ensuite pkg-config dans le répertoire destiné au paquet d'installation de MLV en tapant :
+\verbatim
+make install DESTDIR=$MACOS_PACKAGE
+\endverbatim
+
+Voilà, pkg-config est installé.
+
+
+\subsubsection install_m4_paquet_macos Installation de M4
+
+M4 est un outil d'aide à la compilation.
+
+L'installation de M4 est identique à celle de pkg-config. 
+Commencez par télécharger m4-X.X.X.tar.gz sur le site : 
+http://ftp.gnu.org/gnu/m4/
+
+Puis tapez les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xf m4-X.X.X.tar.gz
+cd m4.X.X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+Ici, m4 est nécessaire pour compiler MLV, mais pas pour son utilisation.
+Les commandes précédentes l'ont installée uniquement dans le repertoire $FAKEROOT.
+
+\subsubsection install_autoconf_paquet_macos Installation de autoconf
+
+Autoconf est un outil d'aide à la compilation.
+
+Commencez par télécharger autoconf-X.X.tar.gz sur le site :
+http://ftp.gnu.org/gnu/autoconf/
+
+Puis tapez les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf autoconf-X.X.tar.gz
+cd autoconf-X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+
+\subsubsection install_autoconf_archive_paquet_macos Installation de autoconf-archive
+
+Autoconf-archives est une bibliothèque de script pour autoconf.
+
+Commencez par télécharger autoconf-archive-X.X.X.tar.gz sur le site :
+http://ftp.gnu.org/gnu/autoconf-archive/
+
+Puis tapez les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf autoconf-archive-X.X.X.tar.gz
+cd autoconf-archive-X.X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+
+\subsubsection install_automake_paquet_macos Installation de automake
+
+Automake est un outil d'aide à la compilation.
+
+Commencez par télécharger automake-X.X.tar.gz sur le site :
+http://ftp.gnu.org/gnu/automake/
+
+Puis tapez les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf automake-X.X.tar.gz
+cd automake-X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+
+\subsubsection install_libtool_paquet_macos Installation de libtool
+
+
+Libtool est un outil d'aide à la compilation.
+
+L'installation de libtool est identique à celle de pkg-config. 
+Commencez par télécharger libtool-X-X.tar.gz sur le site : 
+http://ftp.gnu.org/gnu/libtool/.
+
+Puis tapez les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xf libtool-X-X.tar.gz
+cd libtool-X-X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+\subsubsection install_libxml2_paquet_macos Installation de libxml2
+
+Il n'est pas nécessaire d'installer cette bibliothèque.
+En effet, elle est déjà présente dans l'installation de base de MacOS X.
+
+\subsubsection install_libffi_paquet_macos Installation de libffi
+
+Commencez par télécharger libffi-X.X.tar.gz en allant sur le site :
+http://sourceware.org/libffi/
+
+Puis tapez les lignes de commandes suivantes:
+
+\verbatim
+cd $FAKEROOT/src
+tar -xzf libffi-X.X.tar.gz
+cd libffi-X.X
+./configure --prefix=$LOCALSYSROOT
+cd x86_64-apple-darwinX.X.X
+make
+sudo make install
+make install DESTDIR=$MACOS_PACKAGE
+\endverbatim
+
+\subsubsection install_gettext_paquet_macos Installation de gettext
+
+Commencez par télécharger gettext-X.tar.gz en allant sur le site :
+http://www.gnu.org/software/gettext/
+
+\verbatim
+cd $FAKEROOT/src
+tar -xzf gettext-X.X.X.X.tar.gz
+\endverbatim
+
+Ensuite, compilez et installez la bibliothèque en tapant les commandes suivantes:
+\verbatim
+cd gettext-X.X.X.X
+./configure --prefix=$LOCALSYSROOT
+make
+sudo make install
+make install DESTDIR=$MACOS_PACKAGE
+\endverbatim
+ 
+
+\subsubsection install_glib2_paquet_macos Installation de glib2
+
+Téléchargez la bibliothèque sur le site
+http://ftp.gtk.org/pub/glib/ 
+
+Désarchivez ensuite la bibliothèque en tapant les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf glib-2.X.X.tar.gz
+cd glib-2.X.X
+./configure --prefix=$LOCALSYSROOT
+make
+sudo make install
+make install DESTDIR=$MACOS_PACKAGE
+\endverbatim
+
+
+\subsubsection install_sdl_paquet_macos Installation de SDL
+
+Téléchargez le paquet d'installation pour MacOSX de la bibliothèque sur le site 
+http://www.libsdl.org/download-1.2.php
+
+Ce paquet a pour nom : SDL-1.2.X.dmg (Intel10.5+)
+
+Puis, installez le paquet en tapant les commandes suivantes :
+\verbatim
+mkdir -p $MACOS_PACKAGE/Library/Frameworks
+hdiutil attach SDL-1.2.X.dmg
+sudo cp -r /Volumes/SDL/SDL.framework /Library/Frameworks/
+cp -r /Volumes/SDL/SDL.framework $MACOS_PACKAGE/Library/Frameworks/
+hdiutil detach /Volumes/SDL
+\endverbatim
+
+
+
+
+
+
+\subsubsection install_sdlimage_paquet_macos Installation de SDL_image
+
+Téléchargez le paquet d'installation pour MacOSX de la bibliothèque sur le site
+http://www.libsdl.org/projects/SDL_image/release-1.2.html
+
+Ce paquet a pour nom : SDL_image-1.2.X.dmg (Intel10.5+)
+
+Puis, installez le paquet en tapant les commandes suivantes :
+\verbatim
+hdiutil attach SDL_image-1.2.X.dmg
+sudo cp -r /Volumes/SDL_image/SDL_image.framework /Library/Frameworks/
+cp -r /Volumes/SDL_image/SDL_image.framework $MACOS_PACKAGE/Library/Frameworks/
+hdiutil detach /Volumes/SDL_image
+\endverbatim
+
+
+
+\subsubsection install_sdlmixer_paquet_macos Installation de SDL_mixer
+
+Téléchargez le paquet d'installation pour MacOSX de la bibliothèque sur le site
+http://www.libsdl.org/projects/SDL_mixer/release-1.2.html
+
+Ce paquet a pour nom : SDL_mixer-1.2.X.dmg (Intel10.5+)
+
+Puis, installez le paquet en tapant les commandes suivantes :
+\verbatim
+hdiutil attach SDL_mixer-1.2.X.dmg
+sudo cp -r /Volumes/SDL_mixer/SDL_mixer.framework /Library/Frameworks/
+cp -r /Volumes/SDL_mixer/SDL_mixer.framework $MACOS_PACKAGE/Library/Frameworks/
+hdiutil detach /Volumes/SDL_mixer
+\endverbatim
+
+
+
+
+\subsubsection install_sdlttf_paquet_macos Installation de SDL_ttf
+
+Téléchargez le paquet d'installation pour MacOSX de la bibliothèque sur le site
+http://www.libsdl.org/projects/SDL_ttf/release-1.2.html
+
+Ce paquet a pour nom : SDL_ttf-X.X.X.dmg (Intel10.5+)
+
+Puis, installez le paquet en tapant les commandes suivantes :
+\verbatim
+hdiutil attach SDL_ttf-X.X.X.dmg
+sudo cp -r /Volumes/SDL_ttf/SDL_ttf.framework /Library/Frameworks/
+cp -r /Volumes/SDL_ttf/SDL_ttf.framework $MACOS_PACKAGE/Library/Frameworks/
+hdiutil detach /Volumes/SDL_ttf
+\endverbatim
+
+
+
+
+
+\subsubsection install_sdlgfx_paquet_macos Installation de SDL_gfx
+
+Téléchargez le code source de la bibliothèque sur le site :
+http://www.ferzkopp.net/joomla/content/view/19/14/
+\verbatim
+cd  $FAKEROOT/src
+tar -xzf SDL_gfx-X.X.tar.gz
+\endverbatim
+
+ATTENTION ! Il est important de télécharger la verions de SDL_gfx qui a été 
+prévu pour la version 1.2 de SDL (il ne faut surtout pas prendre SDL2_gfx qui 
+est prévue pour la version 2.0 de SDL ) !
+
+Modifiez le configure.in en remplacant les lignes
+\verbatim
+dnl Check for SDL
+AM_PATH_SDL($SDL_VERSION,
+            :,
+        AC_MSG_ERROR([*** SDL version $SDL_VERSION not found!])
+)
+CFLAGS="$CFLAGS $SDL_CFLAGS"
+# Remove dependencies from 'sdl-config' not meant for us libraries:
+SDL_LIBS=$(echo "$SDL_LIBS" |sed -e 's/-lmingw32//' -e 's/-lSDLmain//')
+LIBS="$LIBS $SDL_LIBS"
+\endverbatim
+par les lignes
+\verbatim
+SDL_CFLAGS="-I/Library/Frameworks/SDL.framework/Headers -framework SDL" 
+SDL_LIBS="-framework SDL" 
+CFLAGS="$CFLAGS $SDL_CFLAGS" 
+LIBS="$LIBS $SDL_LIBS -framework SDL"
+\endverbatim
+
+Reconfigurez la bibliothèque en exécutant la commande:
+\verbatim
+cd SDL_gfx-X.X
+autoreconf --install
+\endverbatim
+
+Finissez la compilation et l'installation de la bibliothèque en tapant les commandes suivantes:
+\verbatim
+./configure --prefix=$LOCALSYSROOT --without-x
+make
+sudo make install
+make install DESTDIR=$MACOS_PACKAGE
+\endverbatim
+
+
+\subsubsection install_cmake_paquet_macos Installation de Cmake
+
+Téléchargez le code source de Cmake, contenu dans le fichier cmake-X.X.X.tar.gz situé sur le site :
+http://www.cmake.org/download/
+
+Installez le paquet en tapant les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf cmake-X.X.X.src.tar.gz
+cd cmake-X.X.X
+./configure --prefix=$FAKEROOT
+make
+make install
+\endverbatim
+
+\subsubsection install_doxygen_paquet_macos Installation de Doxygen
+
+Téléchargez le code source de Doxygen, contenu dans le fichier doxygen-X.X.X.src.tar.gz situé sur le site :
+http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc
+
+Installez le paquet en tapant les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf doxygen-X.X.X.src.tar.gz
+cd doxygen-X.X.X
+cmake -DCMAKE_INSTALL_PREFIX:PATH=$FAKEROOT -G "Unix Makefiles"
+make
+make install
+\endverbatim
+
+\subsection installation_paquet_mlv Installation de la bibliothèque MLV
+
+Commencez par télécharger le code source de la bibliothèque MLV.
+Téléchargez la bibliothèque située à l'adresse : 
+@MLV_SOURCE_REPOSITORY@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+
+Installez la bibliothèque en tapant les commandes suivantes:
+\verbatim
+cd $FAKEROOT/src
+tar -xzf @PACKAGE_TARNAME@-@PACKAGE_VERSION@.tar.gz
+cd @PACKAGE_TARNAME@-@PACKAGE_VERSION@
+./configure --prefix=$SYSROOT libxml_LIBS=-lxml2 libxml_CFLAGS=-I/usr/include/libxml2
+make
+sudo make install
+make install DESTDIR=$MACOS_PACKAGE
+\endverbatim
+
+\section creer_paquet_installation_macos Création du paquet d'installation de MLV pour MacOX
+
+Installer PackageMaker en allant sur le site:
+https://developer.apple.com/downloads/index.action
+
+Installer PackageMaker.
+
+Executez PackageMaker.
+
+Dans le champs Organisation, remplissez:
+\verbatim
+multimedia.library
+\endverbatim
+
+Et choisissez la cible :
+\verbatim
+Mac OS X v10.5 Leopard
+\endverbatim
+
+Cliquez sur "Untitled", puis sur Configuration.
+
+Modifiez le titre de sorte qu'il devienne: "@PACKAGE_TARNAME@-@PACKAGE_VERSION@_macos-@MLV_MACOSX_VERSION@"
+
+Dans "Install Destination", décochez l'option "Volume selected by user" et remplacez le par "System volume".
+
+Pour la description, mettez:
+\verbatim
+The MLV library is a simplified multimedia library. This library has been designed for beginner students in C, and it allows to add graphical and audio effects on the student program. The library is useful to:
+- draw figures, display text and dialog boxes,
+- display images,
+- play sounds and musics,
+- catch mouse and keyboard events,
+- get informations from dialog boxes.
+These tools are simplified interfaces of the SDL library. If you are not a C beginner, better use the SDL librairy (SDL, SDL_gfx, SDL_sound, SDL_ttf). 
+\endverbatim
+
+Ensuite, ajouter le dossier $MACOS_PACKAGE/usr (à l'aide de l'icône en forme de plus).
+
+Réalisez ensuite les opérations suivantes:
+- Allez dans l'onglet contents et selectionnez l'option : "include root in package"
+- Cliquez sur le dossier usr en dessous de path, puis cliquez sur "Apply Recommendations". Normalement, owner a du recursivement etre positionné à root et Group à Wheel
+- Cliquez sur "Configuration" et remplacez le champ "Package Identifier" par "multimedia.library.@PACKAGE_TARNAME@.@PACKAGE_TARNAME@_infrastructure.pkg"
+- Toujours dans "Configuration" , remplacez le champ "Package Version" par "@PACKAGE_VERSION@"
+- Cliquez sur le nom "usr" et renomez-le en "MLV Infrastructure"
+- Ajoutez la description suivante:
+\verbatim
+This package installs the MLV library.
+
+This package installs files in /usr and /usr/local.
+He can potentially break the system.
+\endverbatim
+
+Ajoutez maintenant le dossier $MACOS_PACKAGE/LIBRARY.
+
+Réalisez ensuite les opérations suivantes:
+- Allez dans l'onglet contents et selectionnez l'option : "include root in package"
+- Cliquez sur le dossier Library en dessous de path, puis cliquez sur "Apply Recommendations". Normalement, owner a du recursivement être positionné à root et Group à Wheel.
+- Cliquez sur "Configuration" et remplacez le champ "Package Identifier" par "multimedia.library.@PACKAGE_TARNAME@.sdl_framework.pkg"
+- Toujours dans "Configuration" , remplacez le champ "Package Version" par "@PACKAGE_VERSION@"
+- Cliquez sur le nom "Library" et renomez le en "SDL Framework"
+- Ajoutez la descrition suivante:
+\verbatim
+This package installs the SDL Framework.
+If you have yet installed the SDL Framework, you are not obliged to install this component.
+
+This package installs files in /Library/Framework
+He can potentially break the system.
+\endverbatim
+
+Une fois fait, cliquez sur le bouton Build et enregistrez le paquet dans le dossier de votre choix.
+
+Le paquet est prêt !
+
+
+\section test_paquet Tester le bon fonctionnement des paquets d'installation
+
+Commencer par vérifier que votre paquet d'installation est correcte en copiant le paquet dans un repertoire de test.
+Décompressez le paquet à l'aide de la commande :
+\verbatim
+tar -xzf @MLV_MACOSX_PACKAGE@
+tar -xzf usr.pkg/Payload
+tar -xzf library.pkg/Payload
+\endverbatim
+
+Normalement, vous devriez avoir deux répertoires : Library et usr.
+Il doivent au moins contenir les dossiers et fichiers suivants :
+\verbatim
+Library
+`-- Frameworks
+    |-- SDL.framework
+    |-- SDL_image.framework
+    |-- SDL_mixer.framework
+    `-- SDL_ttf.framework
+usr
+|-- bin
+|   `-- pkg-config
+|-- include
+|   `-- MLV
+|-- lib
+|   |-- libMLV.@MLV_MAJOR_VERSION@.dylib
+|   |-- libMLV.a
+|   |-- libMLV.dylib
+|   |-- libMLV.la
+|   |-- libMLVMain.0.dylib
+|   |-- libMLVMain.a
+|   |-- libMLVMain.dylib
+|   |-- libMLVMain.la
+|   `-- pkgconfig
+|-- local
+|   `-- MLV
+`-- share
+    |-- aclocal
+    |-- doc
+    |-- man
+    `-- MLV
+\endverbatim
+Si tel est le cas, c'est que le paquet a correctement été généré.
+
+Commencez par désinstaller l'infrastructure de compilation du paquet :
+\verbatim
+cd $FAKEROOT/src/pkg-config-X.X && sudo make uninstall
+cd $FAKEROOT/src/libffi-X.X/x86_64-apple-darwinX.X.X && sudo make uninstall
+cd $FAKEROOT/src/gettext-X.X.X.X && sudo make uninstall
+cd $FAKEROOT/src/glib-2.X.X && sudo make uninstall
+sudo rm -rf /Library/Frameworks/SDL_ttf.framework
+sudo rm -rf /Library/Frameworks/SDL_mixer.framework
+sudo rm -rf /Library/Frameworks/SDL_image.framework
+sudo rm -rf /Library/Frameworks/SDL.framework
+cd $FAKEROOT/src/SDL_gfx-X.X && sudo make uninstall
+cd $FAKEROOT/src/@PACKAGE_TARNAME@-@PACKAGE_VERSION@ && sudo make uninstall
+\endverbatim
+
+Supprimez les lignes qui ont été ajoutées dans le fichier .bash_profile au debut du document.
+
+Voilà, on peut maintenant tester l'installation du paquet.
+
+Pour installer le paquet, il vous suffit de cliquer sur le fichier et de suivre les instructions.
+
+Testez maintenant la bibliothèque en tapant les commandes suivantes:
+\verbatim
+cp -r /usr/share/doc/mlv/examples /tmp
+cd /tmp/examples/beginner
+make
+\endverbatim
+
+Si la compilation se fait sans erreur, c'est que l'installation s'est correctement déroulée.
+
+Vous pouvez maitnenant vérifier que chaque programme s'exécute correctement.
+Vérifiez aussi tous les autres exemples.
+
+
+\section uninstall_macos_ppackage Désinstaller le paquet pour remettre le système dans son état d'origine
+
+Il n'y a pas d'outil de désinstallation sous mac.
+Pour désinstaller un paquet, il faut supprimer les fichiers à la main en tapant les commandes:
+\verbatim
+sudo rm -rf /Library/Frameworks/SDL.framework
+sudo rm -rf /Library/Frameworks/SDL_image.framework
+sudo rm -rf /Library/Frameworks/SDL_mixer.framework
+sudo rm -rf /Library/Frameworks/SDL_ttf.framework
+sudo rm -rf /usr/include/MLV
+sudo rm -rf /usr/lib/libMLV*
+sudo rm -rf /usr/lib/pkgconfig/MLV.pc
+sudo rm -rf /usr/local/MLV
+sudo rm -rf /usr/share/MLV
+sudo rm -rf /usr/share/doc/mlv
+sudo rm -rf /usr/share/man/man3/MLV_*.h.3
+sudo rm -rf /usr/bin/pkg-config
+sudo rm -rf /usr/bin/x86_64-apple-darwin13.0.0-pkg-config
+sudo rm -rf /usr/share/aclocal/pkg.m4
+sudo rm -rf /usr/share/doc/pkg-config
+sudo rm -rf /usr/share/man/man1/pkg-config.1
+\endverbatim
+
+Puis, il faut juste dire au système d'oublier l'existence du paquet en question en tapant la commande:
+\verbatim
+sudo pkgutil --forget multimedia.library.mlv.mlv_infrastructure.pkg
+sudo pkgutil --forget multimedia.library.mlv.sdl_framework.pkg
+\endverbatim
+
+*/
+
+
+
+
+// ============================================================================
+
+
+/*!
+\~french
+\page contact_auteur Contacter les auteurs de la bibliothèque
+
+
+Si vous souhaitez contacter les auteurs de cette bibliothèque, vous pouvez envoyer un mail à une des personnes suivantes:
+
+- Adrien Boussicault : <a href="mailto:@MAIL_ADRIEN_BOUSSICAULT@">@MAIL_ADRIEN_BOUSSICAULT@</a>
+- Marc Zipstein : <a href="mailto:@MAIL_MARC_ZIPSTEIN@">@MAIL_MARC_ZIPSTEIN@</a>
+
+Si vous rencontrez un BUG, n'hésitez pas à envoyer un courrier électronique à l'adresse <a href="mailto:@PACKAGE_BUGREPORT@">@PACKAGE_BUGREPORT@</a>.
+
+*/
+
+
+// ============================================================================
+
+
+/*!
+\~french
+\page faq Foire Aux Questions
+
+<b>
+Lorsque j'exécute mon programme, j'obtiens l'erreur : "Error detected by the function MLV_create_window() in LibMLV : The MLV library has yet been initialised". Que dois-je faire ?
+</b> :
+
+Cette erreur apparaît quand on essaye de créer deux fois une fenêtre.
+
+Si vous vouliez créer 2 fenêtres avec MLV.
+Alors, il n'y a pas de solutions à votre problème car MLV a été prévue pour ne
+créer qu'une et qu'une seule fenêtre.
+Il s'agit d'un choix délibéré pour simplifier l'utilisation de la bibliothèque.
+
+Si vous vouliez créer qu'une seule fenêtre, alors vous devez supprimer les 
+appels à MLV_create_windows() jusqu'à ne plus avoir qu'un seul appel.
+
+<b>
+Pourquoi y-a-t-il une latence entre le moment ou j'utilise le calvier et la 
+souris, et le moment ou l'evènement est réèlement traité. Est-ce normal ? 
+</b> :
+
+Il s'agit surement d'une mauvaise gestion des évènements de votre part.
+
+Cette latence provient du fait que vous mettez à jour les données de 
+votre programme ainsi que l'affichage à chaque fois que vous recevez un 
+évènement.
+
+Il ne faut pas !
+
+En effet, mettre à jour l'affichage ou recalculer les données 
+de votre application sont des opérations qui coûtent beaucoup de temps processeur.
+Comme l'ordinateur récupère beaucoup d'évènements (comme quand
+la souris bouge), il n'arrive plus à suivre la cadence et une latence apparaît.
+
+La bonne façon de procéder, est de commencer par récuperer l'ensemble de tous
+les évènements qui ont étés générés depuis le dernier affichage, puis de mettre à 
+jour les données du programme et enfin de de faire l'affichage.
+
+Voilà à quoi devrait ressembler une application qui gére correctement les évènements:
+\code
+struct Data {
+    ...
+};
+
+void init_data( Data * data ){
+    ...
+}
+
+int end_of_program( Data* data ){
+	...
+}
+
+void update_events( Data* data ){
+    MLV_Event event;
+    do {
+        event = MLV_get_event( ... );
+        switch( event ){
+            case MLV_KEY :
+            ...
+        }
+    }while( event != MLV_NONE );
+}
+    
+void update_data( Data* data ){
+    ...
+}
+
+void update_display( Data* data ){
+    ...
+    MLV_actualise_window();
+}
+
+int main(){
+    Data data;
+    init_data( &data );
+    while( ! end_of_program( &data ) ){
+        update_events( &data );
+        update_data( &data );
+        update_display( &data );
+    }
+}
+\endcode
+
+
+<b>
+Mon ordinateur se met à surchauffer quand j'éxécute mon programme.
+Que faut-il faire ?
+</b> :
+
+Vous devez mettre votre programme en sommeil. Pour cela vous devez utiliser la fonction : 
+MLV_delay_according_to_frame_rate().
+
+Voici un exemple de programme qui se met en sommeil périodiquement :
+\code
+int main(){
+    MLV_create_window( ... );
+
+    MLV_change_frame_rate ( 100 );
+    while( ! end_of_program( ... ) ){
+        ...
+        MLV_delay_according_to_frame_rate();
+    }
+
+    MLV_free_window();
+}
+\endcode
+La fonction va suspendre l'exécution du programme et la reprendre un 
+peux plus tard, de sorte que la boucle soit éxécutée 100 fois par seconde.
+
+
+*/
+
+// ============================================================================
+
+
+
+
+/*!
+\~french
+
+\example beginner/01_hello_world.c
+Ce programme créé une fenêtre et affiche Bonjour.
+
+
+\example beginner/02_shapes.c
+Ce programme montre comment il est possible de dessiner les figures
+géométriques suivantes :
+- cercle
+- disque ( cercle plein )
+- ellipse
+- ellipse pleine
+- rectangle
+- rectangle plein
+- ligne
+- point
+- Courbe de Bézier
+- polygone
+- polygone plein
+
+
+\example beginner/03_random.c
+Ce programme montre comment engendrer des entiers, réels et booléens
+aléatoires.
+
+
+\example beginner/04_texts_and_boxes.c
+Ce programme montre comment il est possible d'utiliser deux types de boîte de
+texte.
+
+La première est une boîte dont la taille s'adapte à celle du texte.
+Cette boîte se créé à l'aide de la fonction MLV_draw_adapted_text_box.
+
+La deuxième est une boîte dont la taille est fixée par l'utilisateur.
+Cette boîte s'obtient à l'aide de la fonction MLV_draw_text_box.
+
+
+\example beginner/05_mouse.c
+Ce programme montre comment il est possible de demander à l'utilisateur de 
+cliquer sur la souris et de récuperer alors les coordonnées de la position de
+la souris.
+
+
+\example beginner/06_keyboard.c
+Ce programme montre comment il est possible d'utiliser le clavier.
+
+
+\example beginner/07_input_box.c
+Ce programme montre comment il est possible de récupérer du texte demandé
+à l'utilisateur à l'aide d'une boîte de saisie.
+
+
+\example beginner/08_mouse_keyboard_timer.c
+Ce programme montre comment il est possible d'ajouter un minuteur lorsque 
+l'utilisateur est invité à cliquer ou appuyer sur une touche du clavier
+
+
+\example beginner/09_colors.c
+Le but de ce programme est de donner un outil simple permettant d'obtenir 
+rapidement le code d'une couleur donnée.
+
+Le code source suivant ne constitue pas un tutoriel.
+
+
+\example beginner/10_library_informations.c
+Ce programme a pour but de presenter les fonctions permettant de récuperer
+des informations concernant la bibliothèque.
+
+Ce programme présente aussi rapidement la licence sous laquelle est distribuée
+la bibliothèque MLV.
+
+
+\example medium/01_keyboard_events.c
+Ce programme montre comment il est possible de récupérer des informations
+provenant de l'utilisateur lorsqu'il utilise son clavier sans bloquer
+l'exécution du programme.
+
+Pour cela il utilise le système d'évènements de la bibliothèque MLV :
+
+À chaque fois qu'un utilisateur déplace la sourris, appuie sur les touches 
+d'un clavier, ou entre du texte dans une boîte de saisie, un événèment est 
+créé par la bibliothèque MLV. Cet évènement est placé dans une file 
+d'attente. Il est possible de récupérer toutes les informations concernant 
+ces évènements en appelant la fonction MLV_get_event().
+Cette fonction supprime le dernier évènement de la pile, l'analyse et 
+renvoie, à l'aide de ses paramètres et de sa valeur de retour,
+toutes les informations le concernant.
+
+
+\example medium/02_mouse_events.c
+Ce programme montre comment il est possible de récupérer des informations
+provenant de l'utilisateur lorsqu'il utilise sa souris sans bloquer
+l'exécution du programme.
+
+Pour cela il utilise le système d'évènements de la bibliothèque MLV :
+
+À chaque fois qu'un utilisateur déplace la sourris, appuie sur les touches 
+d'un clavier, ou entre du texte dans une boîte de saisie, un événèment est 
+créé par la bibliothèque MLV. Cet évènement est placé dans une file 
+d'attente. Il est possible de récupérer toutes les informations concernant 
+ces évènements en appelant la fonction MLV_get_event().
+Cette fonction supprime le dernier évènement de la pile, l'analyse et 
+renvoie, à l'aide de ses paramètres et de sa valeur de retour,
+toutes les informations le concernant.
+
+
+\example medium/03_input_box_events.c
+Ce programme montre comment il est possible de récupérer des informations
+provenant de l'utilisateur lorsqu'il utilise une boîte de saisie sans bloquer
+l'exécution du programme.
+
+Pour cela il utilise le système d'évènements de la bibliothèque MLV :
+
+À chaque fois qu'un utilisateur déplace la sourris, appuie sur les touches 
+d'un clavier, ou entre du texte dans une boîte de saisie, un événèment est 
+créé par la bibliothèque MLV. Cet évènement est placé dans une file 
+d'attente. Il est possible de récupérer toutes les informations concernant 
+ces évènements en appelant la fonction MLV_get_event().
+Cette fonction supprime le dernier évènement de la pile, l'analyse et 
+renvoie, à l'aide de ses paramètres et de sa valeur de retour,
+toutes les informations le concernant.
+
+
+\example medium/04_events.c
+Ce programme montre comment il est possible de récupérer des informations
+provenant de l'utilisateur lorsqu'il utilise son clavier, sa souris ou
+lorsqu'il valide une chaîne de caractères à l'aide d'une boîte de saisie
+sans bloquer l'exécution du programme.
+
+Pour cela il utilise le système d'évènements de la bibliothèque MLV :
+
+À chaque fois qu'un utilisateur déplace la sourris, appuie sur les touches 
+d'un clavier, ou entre du texte dans une boîte de saisie, un événèment est 
+créé par la bibliothèque MLV. Cet évènement est placé dans une file 
+d'attente. Il est possible de récupérer toutes les informations concernant 
+ces évènements en appelant la fonction MLV_get_event().
+Cette fonction supprime le dernier évènement de la pile, l'analyse et 
+renvoie, à l'aide de ses paramètres et de sa valeur de retour,
+toutes les informations le concernant.
+
+
+\example medium/05_exit.c
+Ce programme montre comment il est possible de faire arrêter proprement un
+programme lorsque l'utilisateur demande son arrêt en appuyant sur la croix de
+la fenêtre, ou en envoyant un signal sytème d'arret du programme.
+
+
+\example medium/06_colors.c
+Le but de ce programme est de donner un outil simple permettant d'obtenir 
+rapidement le code d'une couleur donnée.
+
+Dans la bibliothèque MLV, le type d'une couleur est MLV_Color. Il s'agit en fait
+d'en entier codé sur 4 octets, soit 32 bits. Le premier octet code la
+la composante rouge de la couleur, le deuxième la composante verte, la
+troisième la composante bleue et la dernière, la composante alpha 
+(transparence).
+
+Ce programme ne constitue pas en soit un tutoriel.
+
+\example medium/07_time.c
+Ce programme affiche différentes informations de temps.
+
+
+
+\example medium/08_full_screen.c
+Ce programme change change la taille des fenetres et met le programme en mode 
+plein écran.
+
+
+\example medium/09_keyboard_accents.c
+Ce programme montre comment il est possible de récupéré les caractères 
+accentués provenant d'une entree clavier.
+
+
+
+\example medium/10_mouse_or_keyboard_access.c
+Ce programme montre comment il est possible de connaître l'état courant d'une 
+touche d'un clavier ou de la position courante de la souris.
+
+
+
+\example medium/11_keys_codes.c
+Le but de ce programme est de donner un outil simple permettant d'obtenir 
+rapidement les différents codes (sym et unicode) et les différents modes du 
+clavier lorsque l'on appuie sur une touche du clavier.
+
+Le code source suivant ne constitue pas un tutoriel.
+
+\example medium/12_desktop_size.c
+Ce programme montre comment il est possible de récupérer la taille de 
+l'environnment de bureau de l'ordinateur.
+
+
+\example advanced/01_texts_and_boxes.c
+Ce programme explique comment récupérer la taille des boîtes de textes avant 
+de les afficher.
+
+
+\example advanced/02_font.c
+Ce programme explique comment utiliser de nouvelles polices de caractères 
+pour afficher du texte.
+
+La police de caractère par default est DejaVuSerif-Bold. Il n'est pas possible
+de changer ou supprimer la police par default mais, les fonctions suivantes
+vous explique comment charger une nouvelle police et comment l'utiliser pour 
+afficher du texte avec cette dernière.
+
+
+\example advanced/03_music.c
+Ce programme montre comment il est possible de faire jouer de la musique à
+votre programme.
+
+
+\example advanced/04_sound.c
+Ce programme montre comment il est possible de faire jouer des échantillons 
+sonores à votre programme.
+
+
+\example advanced/05_playlist.c
+A ECRIRE
+
+
+\example advanced/06_image.c
+Ce programme montre comment il est possible d'utiliser et d'afficher des
+images.
+
+De nombreux formats d'images sont supportées (png, jpg, bmp).
+
+
+\example advanced/07_transparency.c
+Ce programme montre quelques exemples d'utilisation de la transparence.
+
+Nous rapellons que les couleurs sont codées à l'aide de 4 composantes:
+
+- R : rouge (red),
+- G : vert (green),
+- B : bleu (blue),
+- A : transparence (alpha),
+
+codées chacune sur un octet, c'est à dire par un entier comprit entre 0 et 
+256.
+
+La transparence joue un role lorsque une image est dessinée à l'écran ou sur 
+une autre image.
+Lorsque l'on copie une image, les pixels du résultat final sont obtenus en
+faisant le barycentre entre le pixel de l'image source avec celui de l'image
+destination. Les poids des barycentres sont définis par la composante 
+transparence ( composante alpha ) de l'image source.
+La transparence de l'image destination reste inchangée.
+
+Cela nous donne les formules suivantes:
+\verbatim
+R_dest = (alpha_src/256) * R_src + (1- alpha_src/256) * R_dst
+V_dest = (alpha_src/256) * V_src + (1- alpha_src/256) * V_dst
+B_dest = (alpha_src/256) * B_src + (1- alpha_src/256) * B_dst
+A_dest = A_dest
+\endverbatim
+
+Ainsi, si l'a composante alpha de l'image source est à 0, 
+alors la source disparait. Si elle à est 256, alors c'est l'image destination
+qui disparait.
+
+Voici un exiemple avec les couleurs suivantes: 
+
+- couleur du pixel source : RGBA( 100,100,100,128 )
+- couleur du pixel destination : RGBA( 0,10,20,30 )
+- couleur finale apres copie : RGBA( 50,55,65,30 )
+
+Comme la composante alpha est à 128, la couleur finale est donc à moitié
+celle de l'image source (128/256) et à moitié celle de l'image destination
+(1-128/256).
+
+
+\example advanced/08_zone_click.c
+Ce programme explique comment, si elle n'est pas utilisée pour réaliser des 
+effets de transparence, il est possible d'utiliser la composante alpha d'une 
+image pour réaliser des zones de selection.
+
+Attention, si vous ouvrez les images utilisées par cette démonstration avec
+un éditeur d'image, vous obtiendrez une image vide.
+En effet, nous avons détourné la composante alpha pour un autre usage. 
+Dans notre cas elle varie entre 0 et 4. L'image disparait donc par rapport au
+fond. Si vous voulez voir l'image dans votre éditeur d'image, vous devez 
+supprimer la composante alpha.
+
+Dans la pratique, vous n'êtes pas obligé d'utiliser la composante alpha pour
+réaliser une zone de selection. Vous pouvez utiliser plmusieurs images, une 
+pour l'affichage et une pour définir les zones de selection.
+Ainsi, vous conservez la composante alpha pour réaliser des effets de 
+transparence évolués.
+
+
+\example advanced/09_animation.c
+A ECRIRE
+
+
+\example advanced/10_read_xml_file.c
+Ce programme explique commen utilise l'interface simplifié de la bibliothèque
+pour lire et recupere des informations contenu dans des fichiers écrits au
+format xml.
+
+
+\example advanced/11_animation_book.c
+Ce programme charge un enseble d'animation a partir d'un fichier de 
+configuration au format xml et d'un certain nombre d'image donnée.
+
+
+\example advanced/12_paths.c
+Cette dmonstration explique comment l'utilisateur peut faire pour travailler
+avec les chemins d'acces des fichiers.
+
+
+*/

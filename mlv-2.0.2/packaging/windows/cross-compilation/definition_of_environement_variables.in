@@ -1,0 +1,75 @@
+#!/bin/bash
+
+#
+#   This file is part of the MLV Library.
+#
+#   Copyright (C) 2010-2014 Adrien Boussicault, Marc Zipstein
+#
+#
+#    This library is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This library is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+
+if test "x${HOST}" == 'x'
+then
+	HOST='i686-w64-mingw32'
+fi
+
+if test "x${CC}" == 'x'
+then
+	CC="${HOST}-gcc"
+fi
+if test "x${RANLIB}" == 'x'
+then
+	RANLIB="${HOST}-ranlib"
+fi
+if test "x${AR}" == 'x'
+then
+	AR="${HOST}-ar rc"
+	AR_WITHOUT_RC="${HOST}-ar"
+fi
+if test "x${RC}" == 'x'
+then
+	RC="${HOST}-windres"
+fi
+
+if test "x${TOP_CROSS}" == 'x'
+then
+	TOP_CROSS=`pwd .`
+fi
+
+if test x@COMPILE_DEBUG_VERSION_FOR_WINDOW@ = xyes
+then
+	DEBUG_OPTION="--enable-debug"
+	GPROFILE_FLAG="-static"
+fi
+
+
+FAKEROOT="$TOP_CROSS/cross-compilation-x86"
+FAKEROOT_SRC="$FAKEROOT/src"
+
+function print_red
+{
+	echo -e "\e[0;31m$1\e[0m\n"
+}
+
+function print_blue
+{
+	echo -e "\e[0;34m$1\e[0m\n"
+}
+
+function print_green
+{
+	echo -e "\e[0;32m$1\e[0m\n"
+}

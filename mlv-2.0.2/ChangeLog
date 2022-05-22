@@ -1,0 +1,225 @@
+mlv-2.0.2
+ * Window :
+   * We Add the funtion MLV_update_window() because MLV_actualise_windows() is
+     not correct english. The function MLV_Actualis_windows() is still present.
+ * Documentation :
+   * Some small changes in the part explaining how to compile and install MLV.
+ * packaging :
+   * We simplify the windows cross-compilation scripts to generate window 
+     packages.
+   * Code-Block IDE doesn't work. Use Dev-c++ instead of Code-BLock.
+
+mlv-1.2.1
+ * Image and text :
+   * Wa move MLV_save_screen() and MLV_load_screen() inside MLV_image.h
+   * Text functions can construct strings by using extra arguments.
+   * Add text functions with va_list argument.
+ * Window :
+   * We Add the funtion MLV_clear_window() allowing to clear the window. 
+   * We add MLV_create_full_screen_window_with_font().
+   * We add MLV_get_desktop_width()
+   * We add MLV_get_desktop_height()
+   * We add MLV_get_desktop_size()
+ * Example :
+   * We add medium/12_desktop_size.c
+   * We mov beginer/10_keys_codes.c to beginer/11_keys_code.c
+ * API :
+   * Complete xml functions with va_list argument.
+   * We put in different headers the prototype of functions with va_list 
+     argument.
+ * BUG :
+   * The function MLV_draw_text_box_on_image() is now implemented.  
+   * The function MLV_create_full_screen_window() is now implemented.  
+ * Examples :
+   * Add a new example medium/10_keys_code allowing to know the sym, mod
+     and unicode of keyboard events.
+   * For the example, we choose key compatible with azerty and qwerty.
+     This is to help the user to understand how the examples works.
+ * packaging :
+   * We normailze the debian package to follow the Debian Policy.
+     Now Lintian do not produce errors.
+ * Documentation:
+   * We add a FAQ in the web documentation.
+   * We add procedures explain how to publish a new verion of the MLV library.
+ * Mac OS X 10.9 Problem :
+   * We remove all inline functions to solve the flat namespace problem.
+     Mac OS 10.9 Programs doesn't arrive to find function declared as 
+     inlined during the exectution of the program (when the functions are not
+     inlined).
+
+mlv-0.6
+  * API :
+    * The sound api has been completely rewritten. 
+    * Add an animation API.
+    * Add an xml API to read xml file.
+    * Add a path API to work with paths.
+    * Lots of name uniformisations have been performed.
+    * Suppresion of the anglicism evenement in the API. Only headers
+      have been modified. MLV_evenement.h become MLV_event.h.
+    * Simplification of the family of MLV_draw_adapted_box functions.
+  * Examples :
+    * Renumbering of the examples ( the numbers contain always 2 digits )
+    * Add a new example explaining how to use the transparency in 
+      the MLV library.
+    * Add the example 07_time.c who explain how to use time functions
+    * Add the example 09_full_screen.c who explain how to use the 
+      fullscreen mode 
+    * Add a new  example 09_library_informations explaining how to 
+      get some information about the MLV librairy.
+    * Add a new  example 08_zone_click explaining how to use 
+      MLV_get_pixel_on_image to perform zone click.
+    * Add a new  example 09_animation explaining how to use animation
+      framework. ( man MLV_animation.h )
+    * Add a new example 10_read_xml_file explaining how to read and use
+      xml files.
+    * Correction of the display result of the medium demo 6_color.c.
+       Now the demo print the alpha composant of the Color.
+    * Correction of a bug in the demo program medium/6_color.c. The 
+      range of the color component do not arrive to 255 due to floor
+      approximations.
+  * Documentation :
+    * The internet URL present in the file tp5graph.pdf has been
+      corrected.
+    * A Contact paragraph has been added in the MLV Documentation.
+    * An html api of the MLV library has been added in the documentation.
+      This api is generated automatically by doxygen.
+    * Documetation explaining how to use MLV with Dev-c++ has been wrotten.
+    * Documetation explaining how to install the MLV Library on Mac OS X has 
+      been wrotten.
+    * Documetation explaining how to create installation package for Mac OS X
+      has been wrotten.
+  * Animation :
+    * Add an animation framework.
+  * Path :
+    * Add a path framework.
+  * Xml :
+    * Add a xml framework.
+  * General :
+    * Add MLV_inforations.h who propose some functions giving
+      information about the MLV libray. For example, MLV_version()
+      return the version of the library.
+    * The header are now compatible with C++ compilers.
+      User can now use the library in C++ projects.
+  * Image :
+    * Correction of transparence bugs in some functions working
+      with images.
+    * Add the support of several type of image (jpg, png, bmp, ...) 
+      Thanks to SDL_image.
+      To load that images, developer can use MLV_load_image.
+      LV_load_bmp_image is now deprecated, please use 
+      MLV_Load_image instead of.
+    * When image file doesn't exist or is corrupted, MLV_load_imge doesn't crash
+    * Add functions to create image
+    * Add functions to save an image on a bmp format
+    * Add MLV_get_pixel and MLV_get_pixel_on_image to get color
+      information on a particular pixel inside an image.
+    * Add MLV_set_pixel_on_image to change a pixel 
+    * Add functions to draw text and figures on image instead of screen.
+    * Add functions to obtain a mirror image (horizontal or vertical).
+  * Input function (keyboard, mouse and prompt) :
+    * Correction of a bug in MLV_wait_mouse - when user clicked on the mouse, 
+      nothing happens.
+    * Add a new function MLV_wait_keyboard_or_mouse_wait fusionning 
+      the MLV_wait_keyboad and the MLV_wait_mouse features.
+    * Add a new function MLV_wait_keyboard_or_seconds,
+      MLV_wait_mouse_or_seconds and 
+      MLV_wait_keyboard_or_mouse_or_seconds, permeting to wait an 
+      event a finite time.
+    * Correction of a bug in MLV_wait_keyboard, unicode characters 
+      were not well supported.
+    * Add a new function to help user to convert unicode character to
+      caracter encoded in the local character code.
+    * Add a new example 9_keyboard_accents to explain how to use the 
+      MLV_unicode_to_string function.
+    * Now default font and prompt's font are equals.
+    * Now the prompt is automatically activated when you are using the
+      MLV_wait_prompt function.
+    * Add MLV_activate_prompt and MLV_desactivate_prompt functions permitting 
+    * Add MLV_get_mouse_button_state, MLV_get_mouse_position and 
+      MLV_get_keyboard_state function to have direct access on devices.
+    * The name "Prompt" have been changed in "Input_box".
+  * Portage :
+    * The library can build DLL for windows.
+    * A Dev-c++ project has been created to help Dev-c++ user to use MLV
+      library.
+    * The library function now on MacOs X.
+    * The library have installation packages for MacOs X.
+  * Sound :
+    * Sound has been written from scratch.
+  * Text :
+    * Bugs of the size evaluation of boxed texts have been removed.
+  * Time :
+    * Add framerate functions permitting to delay the CPU processor
+      and to have a fixed Frame per second.
+    * The MLV_wait_event, MLV_wait_keyboard and MLV_wait_mouse
+      doesn't take all the cpu processor now.
+    * Add a new time function returning the current date
+  * Window :
+    * Add the fullsScreen mode.
+    * Add some functions to obtain and change the size of the window 
+      and to activate the fullscreen mode.
+    * Add some functions to change the default font.
+    * Bugs of the "Error detected by the function unlockPromptInformation()" 
+      has been removed.
+  * System :
+    * Documentation is now compiled only when there is changements.
+      Now the make install do not create any file or directory if a make stage 
+      has been yet performed.
+      That means that ./configure && make && sudo make install; function now
+      correctly.
+    * The MLV library can be build in different directories (not only the 
+      source directory).
+  * Developer :
+    * Use of a config.h file in the autotool chain.
+
+ -- Boussicault <adrien.boussicault@univ-mlv.fr>  Sun, 01 Jul 2012 12:25:21 +0000
+
+mlv-0.4
+
+  * Correction of MLV.pc. Now you can't use #include<MLV_all.h>.
+    Please use #include<MLV/MLV_all.h> instead of #inlcude<MLV_all.h>
+  * New example in the medium level ( 6_color.c )
+  * Complete link added in the html documentation of the library
+  * Add a new type MLV_Color, in replacement with Uint32
+  * Add MLV_draw_pixel function. This fucntion is the same as 
+    MLV_draw_point.
+  * The documentation of MLV_Evenement.h have been corrected.
+  * Correction of a bug in MLV_mouse_wait and MLV_keyboard_wait. The
+    functions don't wait any keyboard ou mouse event after the first
+    one.
+  * Correction of a bug in MLV_mouse_wait, MLV_keyboard_wait and 
+    MLV_prompt_wait. The event queue was not flushed at the begining
+    of the function. These function returned a deprecated event
+    coming from the precedent user actions.
+  * Add a new event functions - MLV_flush_event_queue() and
+    MLV_wait_event()
+  * Reimplementation from scratch of all the audio feature. Now qe
+    use the SDL_mixer.
+  * MLV_sound become MLV_audio
+  * We have now Sound and Music support
+
+ -- Boussicault <adrien.boussicault@univ-mlv.fr>  Fri, 05 Feb 2010 19:35:51 +0100
+
+mlv-0.2
+
+  * Initial release
+
+ -- Boussicault <adrien.boussicault@univ-mlv.fr>  Fri, 05 Feb 2010 19:35:51 +0100
+
+
+This file is part of the MLV Library.
+
+Copyright (C) 2010-2014 Adrien Boussicault, Marc Zipstein
+
+This library is free software: you can redistribute it and/or modify it under 
+the terms of the GNU General Public License as published by the Free Software 
+Foundation, either version 3 of the License, or (at your option) any later 
+version.
+
+This library is distributed in the hope that it will be useful, but WITHOUT 
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more 
+details.
+
+You should have received a copy of the GNU General Public License along with 
+this Library.  If not, see <http://www.gnu.org/licenses/>.

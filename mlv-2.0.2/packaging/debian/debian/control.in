@@ -1,0 +1,77 @@
+#
+#   This file is part of the MLV Library.
+#
+#   Copyright (C) 2010 Adrien Boussicault, Marc Zipstein
+#
+#
+#    This library is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This library is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+#
+ 
+Source: @PACKAGE_TARNAME@
+Priority: extra
+Maintainer: Unknown Maintener <unknown.maintener@univ-mlv.fr>
+Build-Depends: debhelper (>= 7), autotools-dev, doxygen, libsdl-gfx1.2-dev, libsdl1.2-dev, libsdl-mixer1.2-dev, libsdl-ttf2.0-dev, libglib2.0-dev, libsdl-mixer1.2-dev, libsdl-image1.2-dev, libxml2-dev
+Standards-Version: 3.8.4
+Section: libs
+Homepage: @PACKAGE_URL@
+
+Package: libmlv@MLV_DEBIAN_VERSION@-dev
+Section: libdevel
+Architecture: any
+Depends: libmlv@MLV_DEBIAN_VERSION@ (= ${binary:Version}), libsdl-gfx1.2-dev, libsdl1.2-dev, libsdl-mixer1.2-dev, libsdl-ttf2.0-dev, libglib2.0-dev, libsdl-mixer1.2-dev, libsdl-image1.2-dev, libxml2-dev
+Conflicts: libmlv-dev, libmlv-0.2-dev, libmlv-0.4-dev
+Replaces: libmlv-dev, libmlv-0.2-dev, libmlv-0.4-dev
+Description: simplified multimedia library in C for beginners.
+ The mlv library is a simplified multimedia library.
+ The library is perfect for beginners in C programming who
+ want to use graphic and sound effects.
+ The library permit to:
+  - draw figures, text and boxed text,
+  - display images,
+  - plays musics,
+  - get Keyboard and mouse event,
+  - get data by input boxes.
+ This tools is a simplified interface of the SDL libraries.
+ If you are not a beginner, we recommend you to use the 
+ SDL libraries (sdl, sdl-gfx, sdl-mixer,sdl-ttf) instead of
+ the mlv library.
+ The mlv library can be compiled for Linux, Macintosh 
+ and windows.
+ This package provide all the development infrastructure
+ of the mlv library.
+
+Package: libmlv@MLV_DEBIAN_VERSION@
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libsdl-gfx1.2-5, libsdl1.2debian, libsdl-mixer1.2, libsdl-ttf2.0-0, libglib2.0-0, libsdl-mixer1.2, libsdl-image1.2, libxml2
+Conflicts: libmlv, libmlv-0.2, libmlv-0.4
+Replaces: libmlv, libmlv-0.2, libmlv-0.4
+Description: simplified multimedia library in C for beginners.
+ The mlv library is a simplified multimedia library.
+ The library is perfect for beginners in C programming who 
+ want to use graphic and sound effects.
+ The library permit to:
+  - draw figures, text and boxed text,
+  - display images,
+  - plays musics,
+  - get Keyboard and mouse event,
+  - get data by input boxes.
+ This tools is a simplified interface of the SDL libraries.
+ If you are not a beginner, we recommend you to use the 
+ SDL libraries (sdl, sdl-gfx, sdl-mixer,sdl-ttf) instead of
+ the mlv library.
+ The mlv library can be compiled for Linux, Macintosh 
+ and windows.
+ This package provide the runtime binary needed by the
+ execution of program using the mlv library.

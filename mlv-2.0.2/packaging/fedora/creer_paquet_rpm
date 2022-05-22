@@ -1,0 +1,39 @@
+#
+#   This file is part of the MLV Library.
+#
+#   Copyright (C) 2010,2011,2012,2013 Adrien Boussicault, Marc Zipstein
+#
+#
+#    This library is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This library is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+Il faut insaller sous ubuntu le paquet rpm.
+
+Commencer par télécharger un nouveau depot car vous aller creer des fichier en root.
+
+Tapez la commande suivante, pour creer le paquet rpm
+autoreconf --install --force && ./configure --prefix=/usr && sudo checkinstall -R make install 
+
+- A la question creer un documentation doc-pack repondre NON
+- Changer la version du packet qui n'est pas correcte
+- Pour la desription du paquet, utilisez celle présentée dans le fichier debian control
+
+Le paquet rpm est normalement correctement créer, il ne reste plus qu'à le récuperer dans le repertoire :
+/usr/src/rpm/RPMS/i386/mlv-0.6-1.i386.rpm
+
+Ne pas oublier de desinstaller le paquet installé en tapant la commande :
+ rpm -e mlv-0.6-1
+
+
+

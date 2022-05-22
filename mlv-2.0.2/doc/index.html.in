@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<!--
+This file is part of the MLV Library.
+
+Copyright (C) 2012 Adrien Boussicault, Marc Zipstein
+
+This Library is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This Library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>La bibliothèque MLV</title>
+    <meta name="author" content="Adrien Boussicault" />
+    <meta http-equiv="Content-Language" content="fr" />
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+    <meta name="keywords" content="compilation, cross-compilation, SDL, SDL GFX" />
+    <style type="text/css">
+        h1 { text-align: center; }
+	pre {
+		background-color: #EEE;
+		border: 1px solid #DDD;
+		padding-left: 3px;
+		padding-right: 3px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		line-height: 115%;	   
+	}
+    </style>
+
+</head>
+
+<body>
+
+<h1>MLV Library</h1>
+
+
+<h2>Presentation</h2>
+<p>
+The MLV library is a simplified multimedia library. This library has been designed for beginner students in C, and it allows to add graphical and audio effects on the student program. The library is useful to:
+</p>
+<ul>
+<li>draw figures, display text and dialog boxes,</li>
+<li>display images,</li>
+<li>play sounds and musics,</li>
+<li>catch mouse and keyboard events,</li>
+<li>get informations from dialog boxes.</li>
+</ul>
+<p>
+These tools are simplified interfaces of the SDL library. If you are not a C beginner, better use the SDL librairy (SDL, SDL_gfx, SDL_sound, SDL_ttf).
+</p>
+<p>
+The MLV library is portable, and can be compiled and executed on GNU/Linux, Macintosh and Windows.
+</p>
+
+
+<h2>Documentation</h2>
+<ul>
+<li><a href="./api/French/html/index.html">French</a>,</li>
+<li><a href="./api/Spanish/html/index.html">Spanish</a>,</li>
+<li><a href="./api/English/html/index.html">English</a></li>
+</ul>
+
+<h2>Downloads</h2>
+
+<ul>
+<li><a href="./api/English/html/download.html">Downloads page</a></li>
+<li><a href="@MLV_SOURCE_REPOSITORY@/">repository</a></li>
+</ul>
+
+<h2>Contacts</h2>
+
+<ul>
+<li>Adrien Boussicault : <a href="@MAIL_ADRIEN_BOUSSICAULT@">@MAIL_ADRIEN_BOUSSICAULT@</a></li>
+<li>Marc Zipstein : <a href="@MAIL_MARC_ZIPSTEIN@">@MAIL_MARC_ZIPSTEIN@</a></li>
+</ul>
+
+
+</body>
+</html>
+
+

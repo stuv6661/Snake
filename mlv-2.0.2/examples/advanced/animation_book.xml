@@ -1,0 +1,114 @@
+<animation_book>
+
+
+<layers>
+	<layer>graphic</layer>
+	<layer>team differences</layer>
+</layers>
+
+<channels>
+	<channel>action</channel>
+</channels>
+
+
+<page>
+	<name>creature</name>
+
+	<width>79</width>
+	<height>79</height>
+
+	<columns>4</columns>
+
+	<image>
+		<layer>graphic</layer>
+		<file>creature.png</file>
+	</image>
+	<image>
+		<layer>team differences</layer>
+		<file>creature.png</file>
+	</image>
+</page>
+
+
+<sound>
+	<name>walk</name>
+	<sample>
+		<channel>action</channel>
+		<file>walk.ogg</file>
+	</sample>
+</sound>
+<sound>
+	<name>gallop</name>
+	<sample>
+		<channel>action</channel>
+		<file>gallop.ogg</file>
+	</sample>
+</sound>
+
+
+<animation>
+	<name>walk</name>
+	<page>creature</page>
+	<frame>
+		<panel>0</panel>
+		<time>4</time>
+		<sound>walk</sound>
+	</frame>
+	<frame>
+		<panel>1</panel>
+		<time>4</time>
+	</frame>
+	<frame>
+		<panel>2</panel>
+		<time>4</time>
+		<sound>walk</sound>
+	</frame>
+	<frame>
+		<panel>3</panel>
+		<time>4</time>
+	</frame>
+</animation>
+
+<animation>
+	<name>run</name>
+	<page>creature</page>
+	<frame>
+		<panel>4</panel>
+		<time>3</time>
+		<sound>gallop</sound>
+	</frame>
+	<frame>
+		<panel>5</panel>
+		<time>3</time>
+	</frame>
+	<frame>
+		<panel>6</panel>
+		<time>3</time>
+	</frame>
+	<frame>
+		<panel>5</panel>
+		<time>3</time>
+	</frame>
+</animation>
+
+</animation_book>
+
+<!--
+   This file is part of the MLV Library.
+
+   Copyright (C) 2010,2011,2012,2013 Adrien Boussicault, Marc Zipstein
+
+
+    This Library is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This Library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+-->

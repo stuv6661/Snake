@@ -1,0 +1,124 @@
+% This file is part of the MLV Library.
+% 
+% Copyright (C) 2012 Adrien Boussicault, Marc Zipstein
+% 
+% This Library is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This Library is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+
+\documentclass[11pt]{article}
+\usepackage{graphics}
+\usepackage{a4wide}
+\usepackage[latin1]{inputenc}        
+\begin{document}
+\begin{center}
+{\Large \bf TP 5\\\mbox{} \\
+Utilisation de la bibliothèque graphique MLV}
+\end{center}
+\hrule
+\vspace*{1mm}
+L'objet de ce TP est d'utiliser la librairie MLV pour dessiner et interagir avec
+votre programme \`a l'aide de la souris et du clavier.
+
+Des programmes de d\'emonstration sont disponibles dans le r\'epertoire \\ 
+\verb#/usr/share/doc/mlv/examples#. 
+Recopier ces exemples par la commande\\
+{\tt cp -r /usr/share/doc/mlv/examples .}
+
+Les diff\'erents programmes propos\'es sont class\'es en trois cat\'egories : 
+beginner (d\'ebutant), medium (moyen) et advanced (avanc\'e).
+
+Pour ce TP, vous aurez uniquement besoin di'utiliser les fonctions 
+propos\'ees dans la cat\'egorie beginner.
+
+Pour compiler les programmes de la cat\'egorie beginner, placez vous dans le 
+r\'epertoire de compilation en tapant la commande
+{\tt cd examples/beginner},
+puis tapez la commande:
+{\tt make}.
+
+Pour compiler votre programme \verb#demo.c#, recopier le \verb#Makefile# 
+situé dans le répertoire \verb#/usr/share/doc/mlv/examples/beginner/Makefile# dans le 
+le répertoire où se trouve \verb#demo.c#.
+Modifier le fichier \verb#Makefile# ainsi copié en remplaçant la ligne TARGET=... par:
+\begin{verbatim}
+TARGET = demo
+\end{verbatim}
+
+Les commentaires de chacunes des d\'emonstrations constituent une documentation 
+des fonctions de la librairie MLV.
+Vous devez donc lire les diff\'erents codes sources pr\'esents dans le 
+r\'epertoire \verb#beginner# en recherchant les fonctions utilisables.
+
+Une documentation plus compl\'ete et d\'etaill\'ee peut \^etre trouv\'ee en tapant 
+dans la commande : {\tt man MLV\_all.h}.
+
+Si vous souhaitez installer cette librairie chez vous, vous pouvez vous reporter
+à la documentation pr\'esente dans le dossier \verb#/usr/share/doc/mlv/index.html#
+ou vous rendre sur le site \verb#@PACKAGE_URL@#.
+
+\vspace*{1mm}
+\hrule
+\vspace*{5mm}
+
+\begin{enumerate}
+\item {\bf Rectangle}
+\begin{itemize}
+\item \'Ecrire un premier programme qui ouvre une fenêtre de largeur 400 pixels et de hauteur 300 pixels.
+\item \'Ecrire le programme \verb+Rectangle+ dessinant un rectangle dans une
+fen\^etre dont les dimensions ont \'et\'e fournies par l'utilisateur. Les
+dimensions du rectangle seront exactement la moiti\'e de celle de la fen\^etre
+et le rectangle devra \^etre centr\'e dans la fen\^etre.
+Par exemple, on aimerait avoir~:
+\begin{center} 
+\includegraphics{rectangle.eps}
+\end{center}
+\item Modifier le programme \verb+Rectangle+ afin d'afficher un rectangle rempli
+de couleur bleue.
+\end{itemize}
+\item {\bf Ellipse}
+\begin{itemize}
+\item
+\'Ecrire le programme \verb+Ellipse+ dessinant la plus grande ellipse inscrite
+dans une fen\^etre dont les dimensions ont \'et\'e fournies par l'utilisateur.
+Par exemple, on aimerait avoir~:
+\begin{center}
+\includegraphics{rectangle-ellipse.eps}
+\end{center}
+\item
+\'Ecrire le programme \verb+Cercle+ dessinant le plus grand cercle inscrit
+dans une fen\^etre dont les dimensions ont \'et\'e fournies par l'utilisateur.
+\end{itemize}
+\item {\bf Cercle}\\
+\'Ecrire un programmee \verb+Cercle_epais+ permettant de dessiner un cercle
+dont le centre \verb+(x,y)+, le rayon, la couleur et l'\'epaisseur du trait
+(exprim\'e en points) peuvent \^etre donn\'es par l'utilisateur. Deux
+techniques sont envisageables: discuter les avantages et inconv\'enients de
+chacune d'elles.
+\item {\bf Animation}\\
+\'Ecrire le programme \verb+Cercle_anim+ affichant un cercle centr\'e dans
+la fen\^etre et dont le rayon cro\^{\i}t selon un pas (en nombre de pixels)
+donn\'e par l'utilisateur. L'affichage du cercle est stopp\'e lorsque le
+cercle atteint la plus grande dimension (largeur ou hauteur de la fen\^etre.
+Ces dimensions ont \'et\'e pr\'ealablement fournies par l'utilisateur.
+\item {\bf Saisie de points avec la souris}\\
+\'Ecrire le programme \verb+Polygone+ permettant \`a l'utilisateur de
+dessiner un polygone dans une fen\^etre en cliquant dans la fen\^etre pour
+indiquer la position des \verb+n+ sommets. Le nombre \verb+n+ sera
+pr\'ealablement fourni par l'utilisateur et permettra de g\'en\'erer un
+polygone de (\verb+n-1+) ar\^etes.
+\item Transformer les programme pr\'ec\'edent en fonction appelable à partir d\,'un
+  menu
+\end{enumerate}
+\end{document}
+
+

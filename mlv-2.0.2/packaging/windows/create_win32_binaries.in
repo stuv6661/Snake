@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# Compilation de la librairie MLV
+
+#
+#   This file is part of the MLV Library.
+#
+#   Copyright (C) 2010-2014 Adrien Boussicault, Marc Zipstein
+#
+#
+#    This library is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This library is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+CURRENT=`pwd .`
+MAIN_DEV=@PACKAGE_TARNAME@-@PACKAGE_VERSION@-win32
+
+TOP_CROSS=$CURRENT/cross-compilation
+
+source $TOP_CROSS/definition_of_environement_variables
+
+print_blue "Cleaning old building."
+rm -rf $MAIN_DEV
+rm -rf $MAIN_DEV.zip
+
+(
+if ! test -a $FAKEROOT/bin/libMLV-@MLV_MAJOR_VERSION@.dll;
+then
+	print_blue "Compiling all the Win binaries of MLV and his dependencies."
+	cd $TOP_CROSS
+	./mingw_compilation_for_mlv
+fi
+if ! test -a $FAKEROOT/bin/libMLV-@MLV_MAJOR_VERSION@.dll;
+then
+	print_blue "MLV compilation Fail, we abort."
+	exit
+fi
+)
+
+
+print_blue "We build the Win 32 package of MLV."
+mkdir $MAIN_DEV
+mkdir $MAIN_DEV/include 
+mkdir $MAIN_DEV/lib 
+mkdir $MAIN_DEV/bin 
+
+cp -r $FAKEROOT/include/SDL $MAIN_DEV/include/
+cp -r $FAKEROOT/include/MLV $MAIN_DEV/include/ 
+cp $FAKEROOT/lib/libSDLmain.a $MAIN_DEV/lib/ 
+cp $FAKEROOT/lib/libMLV.a $MAIN_DEV/lib/ 
+cp /usr/${HOST}/lib/libmingw32.a $MAIN_DEV/lib/
+cp /usr/${HOST}/lib/libmingwex.a $MAIN_DEV/lib/
+
+cp $FAKEROOT/bin/*.dll $MAIN_DEV/bin/.
+cp $FAKEROOT/lib/LICENSE* $MAIN_DEV/lib/.
+cp $FAKEROOT/lib/LICENSE* $MAIN_DEV/bin/.
+
+cp -r $FAKEROOT/share/MLV/data $MAIN_DEV/bin/
+cp @abs_top_srcdir@/gpl.txt $MAIN_DEV/bin/
+cp @abs_top_srcdir@/gpl.txt $MAIN_DEV/
+
+zip -q -r $MAIN_DEV.zip $MAIN_DEV

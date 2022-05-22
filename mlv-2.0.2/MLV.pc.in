@@ -1,0 +1,33 @@
+#
+#   This file is part of the MLV Library.
+#
+#   Copyright (C) 2010 Adrien Boussicault, Marc Zipstein
+#
+#
+#    This library is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This library is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this Library.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: MLV
+Description: The MLV library
+Version: @VERSION@
+@OS_IS_APPLE_FALSE@Requires: sdl
+@OS_IS_APPLE_TRUE@Requires:
+@OS_IS_APPLE_FALSE@Libs: -L${libdir} -lMLV -lm
+@OS_IS_APPLE_TRUE@Libs: -L${libdir} -lMLV -lMLVMain -framework Cocoa -lm
+Cflags: -I${includedir}
